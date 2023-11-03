@@ -15,18 +15,20 @@ export class AgendarComponent implements OnInit {
   public listaOfertas :  Array<Oferta> = [];
   public listaCandidatos :  Array<Candidate> = [];
   public cod_empresa: number = 0;
+  public fechaAgendado : Date = new Date(2023, 8, 10, 9,0,0);
   public entrevista : Entrevista = new Entrevista("",[], "", "", "", "");
   selectedEmpresa: Company = new Company(0, '', '', '', '', '', '', '', '');
 
 
 
   public ionicForm = new FormGroup({
-    empresa: new FormControl<Company[]>(this.listaEmpresas),
-    oferta: new FormControl<Oferta[]>(this.listaOfertas),
-    candidato: new FormControl<Candidate[]>(this.listaCandidatos),
-    link: new FormControl<string>(''),
-    descripcion: new FormControl<string>(''),
-    fecha: new FormControl<string>(''),
+    empresa: new FormControl<Company[]>(this.listaEmpresas,[Validators.required]),
+    oferta: new FormControl<Oferta[]>(this.listaOfertas,[Validators.required]),
+    candidato: new FormControl<Candidate[]>(this.listaCandidatos,[Validators.required]),
+    link: new FormControl<string>('',[Validators.required]),
+    descripcion: new FormControl<string>('',[Validators.required]),
+    mifecha: new FormControl<string>('',[Validators.required]),
+    mihora: new FormControl<string>('',[Validators.required])
 
   });
 
@@ -86,13 +88,12 @@ export class AgendarComponent implements OnInit {
     return this.ionicForm.controls;
   }
   submitForm = () => {
+
     if (this.ionicForm.valid) {
       this.entrevista.description = this.ionicForm.get('descripcion')?.value?.toString() ?? '';
-      this.entrevista.date = this.ionicForm.get('fecha')?.value?.toString() ?? '';
+      this.entrevista.date = this.ionicForm.get('mifecha')?.value?.toString()?? ''
+      this.entrevista.date += " "+this.ionicForm.get('mihora')?.value?.toString()?? ''
       this.entrevista.link = this.ionicForm.get('link')?.value?.toString() ?? '';
-
-      console.log(this.entrevista);
-
 
       this.resultado.crearEntrevista(this.entrevista).subscribe(datos => {
         console.log( "GUardado"+datos);
@@ -104,6 +105,9 @@ export class AgendarComponent implements OnInit {
 
       return false;
     } else {
+      console.log("Fecha agendado "+this.fechaAgendado)
+      console.log("fecha formulrio mihora "+this.ionicForm.get('mihora')?.value?.toString() )
+      console.log("fecha formulrio mifecha "+this.ionicForm.get('mifecha')?.value?.toString() )
       return console.log('Please provide all the required values!');
     }
   };
