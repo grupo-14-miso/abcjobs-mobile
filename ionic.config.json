@@ -3,7 +3,9 @@
   "projects": {
     "nueva-app": {
       "name": "nueva-app",
-      "integrations": {},
+      "integrations": {
+        "capacitor": {}
+      },
       "type": "angular"
     }
   }

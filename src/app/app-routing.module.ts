@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExamenComponent } from './examen/components/examenes/examen.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ListarPruebasComponent } from './examen/components/listar-pruebas/listar-pruebas.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
-import { ResultadosComponent } from './resultados/components/resultados.component';
+import { AgendarComponent } from './internoabc/components/agendar/agendar.component';
+import { PersonaComponent } from './persona/persona.component';
+import { ResultadosComponent } from './persona/components/resultados/resultados.component';
+import { ListarPruebasComponent } from './persona/components/listar-pruebas/listar-pruebas.component';
+import { InternoabcComponent } from './internoabc/internoabc.component';
+import { EmpresaComponent } from './empresa/empresa.component';
+import { ProgramarComponent } from './internoabc/components/programar/programar.component';
+import { EntrevistasComponent } from './internoabc/components/entrevistas/entrevistas.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'persona',
     pathMatch:'full'
   },
   {
     path: 'inicio',
-    component:InicioComponent
+    component:PersonaComponent
 
   },
   {
@@ -24,12 +27,37 @@ const routes: Routes = [
 
   },
   {
-    path: 'home',
-    component:HomeComponent
+    path: 'persona',
+    component:PersonaComponent
   },
   {
+    path: 'empresa',
+    component:EmpresaComponent
+  },
+  {
+    path: 'internoabc',
+    component:InternoabcComponent
+  },
+  {
+    path: 'internoabc/agendar',
+    component:AgendarComponent
+  },
+  {
+    path: 'internoabc/programar',
+    component:ProgramarComponent
+  },
+  {
+    path: 'internoabc/resultados',
+    component:ResultadosComponent
+  },
+  {
+    path: 'internoabc/entrevistas',
+    component:EntrevistasComponent
+  },
+
+  {
     path: 'examen/:id',
-    component:ExamenComponent
+    component:PersonaComponent
   },
   {
     path: 'resultados',

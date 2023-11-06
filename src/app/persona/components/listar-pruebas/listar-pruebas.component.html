@@ -1,0 +1,40 @@
+<app-encabezados></app-encabezados>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Procesos Vigentes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content  class="ion-padding">
+
+    <div class="container-fluid" *ngIf="examenSeleccionado===false">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Aspirante</ion-card-title>
+          <ion-card-subtitle>Pruebas Pendientes</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card  (click)="seleccionaExamen(i)" color="success" *ngFor="let c of misexamenes; let i =index">
+        <ion-card-header>
+          <ion-card-title>Examen de {{c.focus}}</ion-card-title>
+          <ion-card-subtitle>Rol {{c.rol}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content> Tipo {{c.type}} </ion-card-content>
+      </ion-card>
+
+
+
+    </div>
+    <div class="container-fluid" *ngIf="examenSeleccionado===true">
+      <app-examen [miexamen]="misexamenes[codExamen]" (finalizarExamen)="examenFinalizado($event)"></app-examen>
+    </div>
+  </ion-content>
+

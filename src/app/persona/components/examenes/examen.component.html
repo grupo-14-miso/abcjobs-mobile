@@ -1,0 +1,62 @@
+<!-- buena -->
+
+
+<ion-grid class="ion-padding">
+  <ion-row>
+    <h3>Pregunta {{pregunta+1}} de {{totalPreguntas}}</h3>
+  </ion-row>
+  <ion-row>
+    <h1>{{traePregunta()}}</h1>
+  </ion-row>
+  <ion-row>
+    <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
+
+      <div>
+        <label>Seleccione una de las siguientes respuestas</label>
+        <ion-list>
+        <ion-radio-group name="option" [(ngModel)]="selectedOption" required class="vertical-radio-group">
+          <ion-row value="x" *ngFor="let mivar of listartas; let x = index; " >
+            <ion-item>
+
+              <ion-radio  slot="start"  >
+
+              </ion-radio>
+
+              <span class="ion-text-wrap"><h4>{{ traeTexto(mivar)  }}</h4></span>
+            </ion-item>
+
+          </ion-row>
+        </ion-radio-group>
+      </ion-list>
+      </div>
+
+       <!-- Validation message for required field -->
+       <div class="validation-message" *ngIf="isSubmitted && !form.controls['option'].valid">
+        Para poder continuar seleccione una opcion
+      </div>
+
+
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button  id="finalizar" (click)="finalizar()"  *ngIf="pregunta+1 >= totalPreguntas" >Finalizar</ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="end">
+          <ion-button type="submit" id="siguiente" [disabled]="selectedOption === ''" *ngIf="pregunta+1 < totalPreguntas" >Siguiente</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+
+
+    </form>
+  </ion-row>
+
+</ion-grid>
+
+
+
+
+
+
+
+
+

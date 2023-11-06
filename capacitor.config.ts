@@ -1,9 +1,9 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'abcjobs-mobile',
-  webDir: 'www',
+  appId: 'io.ionic.starter',
+  appName: 'Miso abc jobs grupo 14',
+  webDir: 'dist/nueva-app',
   server: {
     androidScheme: 'https'
   }

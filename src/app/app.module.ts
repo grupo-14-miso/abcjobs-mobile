@@ -4,24 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
-import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-
-import { ExamenModule } from './examen/examen.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ResultadosModule } from './resultados/resultados.module';
+
+import { EmpresaModule } from './empresa/empresa.module';
+import { InternoabcModule } from './internoabc/internoabc.module';
+import { PersonaModule } from './persona/persona.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    EmpresaModule,
+    InternoabcModule,
+    PersonaModule,
     IonicModule.forRoot(),
     BrowserAnimationsModule
   ],
