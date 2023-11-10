@@ -10,6 +10,7 @@ import { PruebaComponent } from "./components/prueba/prueba.component";
 import { PersonaComponent } from './persona.component';
 import { RouterModule } from '@angular/router';
 import { EncabezadosComponent } from './components/encabezados/encabezados.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { EncabezadosComponent } from './components/encabezados/encabezados.compo
     IonicModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CoreModule
 
   ],
   exports: [

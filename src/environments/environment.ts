@@ -15,6 +15,9 @@ export const environment = {
   urlEmpresas: 'http://34.171.225.63.nip.io/companies',
   urlOfertas: 'http://34.171.225.63.nip.io/companies/offer',
   urlEntrevistas: 'https://34.171.225.63.nip.io/interviews',
+  githubApiKey: 'AIzaSyBiFpLZKR3CTDQeCfwS19Z-vlWdCTDi3hc',
+  baseUrlTranslate : 'https://translation.googleapis.com/language/translate/v2',
+  baseUrl1 : 'https://34.171.225.63.nip.io/'
 };
 
 /*

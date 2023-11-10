@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { LanguageService } from 'src/app/core/template/services/language.service';
+
 
 @Component({
   selector: 'app-encabezados',
@@ -7,10 +8,17 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./encabezados.component.css']
 })
 export class EncabezadosComponent implements OnInit {
-
-  constructor() { }
+  targetLanguage : string = "es"
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit(): void {
+  }
+
+
+  onChange(event: Event): void {
+    const targetLanguage = (event.target as HTMLSelectElement).value;
+    this.languageService.setLanguage(targetLanguage);
+    this.targetLanguage = targetLanguage;
   }
 
 }

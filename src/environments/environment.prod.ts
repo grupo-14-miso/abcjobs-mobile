@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   baseUrl:'https://34.171.225.63.nip.io/assignments',
   urlPerfiles: 'https://34.171.225.63.nip.io/users/profiles' ,
   urlPruebas: 'https://34.171.225.63.nip.io/assignments?status=in_progress&status=to_do' ,
@@ -11,4 +11,7 @@ export const environment = {
   urlEmpresas: 'https://34.171.225.63.nip.io/companies',
   urlOfertas: 'https://34.171.225.63.nip.io/companies/offer',
   urlEntrevistas: 'https://34.171.225.63.nip.io/interviews',
+  githubApiKey: 'AIzaSyBiFpLZKR3CTDQeCfwS19Z-vlWdCTDi3hc'
 };
+
+
