@@ -1,0 +1,20 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>{{ 'Menu Empleado' | translate | async }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list class="list-group">
+      <ion-item class="list-group-item" (click)="mandarOpcion('inicio')" > {{ 'Inicio' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('seleccionar')" >{{ 'Seleccionar Candidato' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('desempeno')" >{{ 'Evaluacion Desempeño' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('resultados')" >{{ 'Resultados Entrevistas' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('agenda')"  >{{ 'Entrevistas Programadas' | translate | async }}</ion-item>
+
+      <ion-item class="list-group-item" routerLink="/login/" routerLinkActive="active">{{ 'Salir' | translate | async }}</ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from '../core/template/services/language.service';
 
 @Component({
   selector: 'app-empresa',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./empresa.component.css']
 })
 export class EmpresaComponent implements OnInit {
-
-  constructor() { }
+  targetLanguage : string = "es"
+  opcionActual : string = "inicio"
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit() {
   }
+
+
+  ponerIdioma(idioma: string): void {
+
+    this.languageService.setLanguage(idioma);
+    this.targetLanguage = idioma;
+  }
+
+  ponerOpcion(opcion: string): void {
+    if (opcion == "" || opcion == undefined ) {
+      this.opcionActual = "inicio";
+    }
+    console.log("recibido", opcion);
+      this.opcionActual = opcion;
+    }
+
 
 }
