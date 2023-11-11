@@ -8,12 +8,13 @@ import { InternoabcComponent } from './internoabc/internoabc.component';
 import { EmpresaComponent } from './empresa/empresa.component';
 import { ProgramarComponent } from './internoabc/components/programar/programar.component';
 import { EntrevistasComponent } from './internoabc/components/entrevistas/entrevistas.component';
+import { LoginComponent } from './core/components/login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'persona',
+    redirectTo: 'login',
     pathMatch:'full'
   },
   {
@@ -22,8 +23,8 @@ const routes: Routes = [
 
   },
   {
-    path: 'prueba',
-    component:ListarPruebasComponent
+    path: 'login',
+    component:LoginComponent
 
   },
   {
