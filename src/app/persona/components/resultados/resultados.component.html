@@ -1,23 +1,11 @@
-<app-encabezados></app-encabezados>
-
-
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Resultados Procesos</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-content  class="ion-padding">
 
-    <div class="container-fluid" *ngIf="examenSeleccionado===false">
+    <div class="container-fluid" >
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Aspirante</ion-card-title>
-          <ion-card-subtitle>Pruebas Pendientes</ion-card-subtitle>
+          <ion-card-title class="h1">{{ 'Resultados' | translate | async }}</ion-card-title>
+          <ion-card-subtitle>{{ 'Pruebas Pendientes' | translate | async }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
         </ion-card-content>
@@ -25,9 +13,9 @@
 
       <ion-card   *ngFor="let c of misexamenes; let i =index">
         <ion-card-header>
-          <ion-card-title>Examen de {{c.focus}}  </ion-card-title>
-          <ion-card-title> Tipo {{c.type}}</ion-card-title>
-          <ion-card-subtitle>Rol {{c.rol}}</ion-card-subtitle>
+          <ion-card-title>{{ 'Examen de' | translate | async }} {{c.focus}}  </ion-card-title>
+          <ion-card-title>{{ 'Tipo' | translate | async }}  {{c.type}}</ion-card-title>
+          <ion-card-subtitle>{{ 'Rol' | translate | async }} {{c.rol}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
 
@@ -38,7 +26,7 @@
                   <ion-thumbnail  slot="start">
                     <img alt="datos" src="./assets/application_2245126.png" />
                   </ion-thumbnail>
-                  <ion-label><H1>Resultado {{c.result}} </H1>  </ion-label>
+                  <ion-label><H1>{{ 'Resultado' | translate | async }} {{c.result}} </H1>  </ion-label>
                 </div>
 
               </ion-item>

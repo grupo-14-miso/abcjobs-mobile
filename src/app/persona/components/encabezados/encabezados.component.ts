@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LanguageService } from 'src/app/core/template/services/language.service';
 
 
@@ -9,6 +9,7 @@ import { LanguageService } from 'src/app/core/template/services/language.service
 })
 export class EncabezadosComponent implements OnInit {
   targetLanguage : string = "es"
+  @Output() ponerOpcion = new EventEmitter<string>();
   constructor(private languageService: LanguageService) { }
 
   ngOnInit(): void {
@@ -20,5 +21,11 @@ export class EncabezadosComponent implements OnInit {
     this.languageService.setLanguage(targetLanguage);
     this.targetLanguage = targetLanguage;
   }
+
+  mandarOpcion(opcion: string): void {
+
+    this.ponerOpcion.emit(opcion);
+  }
+
 
 }

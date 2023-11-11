@@ -7,7 +7,7 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Agendar Entrevistas</ion-title>
+      <ion-title>{{ 'Agendar Entrevistas' | translate | async }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -21,7 +21,7 @@
           (ionChange)=seleccionaEmpresa()
           formControlName="empresa"
           shape="round"
-          label="Empresa:"
+          label="{{ 'Empresa' | translate | async }}"
           >
           <ion-select-option  *ngFor="let c of listaEmpresas ; let i =index" value="{{c.company_id}}">{{c.name}}</ion-select-option>
         </ion-select>
@@ -32,9 +32,9 @@
           formControlName="oferta"
           (ionChange)=seleccionaOferta()
           shape="round"
-          label="oferta:"
+          label="{{ 'Oferta' | translate | async }}:"
           labelPlacement="floating">
-          <ion-select-option  *ngFor="let c of listaOfertas ; let i =index" value="{{c.offer_id}}">{{c.name}}</ion-select-option>
+          <ion-select-option  *ngFor="let c of listaOfertas ; let i =index" value="{{c.offer_id}}">{{ c.name | translate | async }} </ion-select-option>
         </ion-select>
       </ion-row>
 
@@ -43,7 +43,7 @@
           formControlName="candidato"
           (ionChange)=seleccionaCandidato()
           shape="round"
-          label="candidato:"
+          label="{{ 'Candidato' | translate | async }}:"
           labelPlacement="floating">
           <ion-select-option  *ngFor="let c of listaPreentrevistas ; let i =index" value="{{c.pre_interview.id_candidate}}">{{c.candidate.Nombre}} {{c.candidate.apellido}}</ion-select-option>
         </ion-select>
@@ -53,7 +53,7 @@
         <ion-input fill="outline"
           formControlName="link"
           shape="round"
-          label="Link Reunion:"
+          label="{{ 'Link Reunión' | translate | async }}:"
           type="url"
           labelPlacement="floating">
         </ion-input>
@@ -63,7 +63,7 @@
         <ion-input fill="outline"
         formControlName="descripcion"
         shape="round"
-        label="Descripcion:"
+        label="{{ 'Descripción' | translate | async }}:"
         labelPlacement="floating"></ion-input>
       </ion-row>
 

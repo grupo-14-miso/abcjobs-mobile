@@ -8,9 +8,10 @@ import { TranslationService } from './template/services/translation.service';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from './template/pipes/translate.pipe';
 import { LanguageService } from './template/services/language.service';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [ HeaderComponent, TranslatePipe],
+  declarations: [ HeaderComponent, TranslatePipe, LoginComponent],
   imports: [
     CommonModule,
     RouterModule,

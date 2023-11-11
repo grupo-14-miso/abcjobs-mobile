@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
-    component:PersonaComponent
+    component:ListarPruebasComponent
 
   },
   {
@@ -57,7 +57,7 @@ const routes: Routes = [
 
   {
     path: 'examen/:id',
-    component:PersonaComponent
+    component:ListarPruebasComponent
   },
   {
     path: 'resultados',

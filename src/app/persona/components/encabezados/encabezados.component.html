@@ -1,18 +1,22 @@
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Menu Content</ion-title>
+      <ion-title>{{ 'Menu Empleado' | translate | async }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list class="list-group">
-      <ion-item class="list-group-item" routerLink="/persona/" routerLinkActive="active">Inicio</ion-item>
-      <ion-item  class="list-group-item" routerLink="/prueba" routerLinkActive="active">Procesos Vigentes</ion-item>
-      <ion-item  class="list-group-item" routerLink="/resultados" routerLinkActive="active">Resultados</ion-item>
+      <ion-item class="list-group-item" (click)="mandarOpcion('inicio')" > {{ 'Inicio' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('datos')" >{{ 'Datos Personales' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('laboral')" >{{ 'Experiencia laboral' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('academica')" >{{ 'Información Academica' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('tecnica')"  >{{ 'Información Técnica' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('procesos')" >{{ 'Procesos Vigentes' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('resultados')" >{{ 'Resultados Procesos' | translate | async }}</ion-item>
 
-      <ion-item class="list-group-item" routerLink="/internoabc/agendar" routerLinkActive="active">Agendar Entrevistas</ion-item>
-      <ion-item  class="list-group-item" routerLink="/internoabc/entrevistas" routerLinkActive="active">Consultar Entrevistas</ion-item>
-      <ion-item class="list-group-item" routerLink="/internoabc/" routerLinkActive="active">Inicio Empleados</ion-item>
+      <ion-item class="list-group-item" routerLink="/internoabc/agendar" routerLinkActive="active">{{ 'Agendar Entrevistas' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" routerLink="/internoabc/entrevistas" routerLinkActive="active">{{ 'Consultar Entrevistas' | translate | async }}</ion-item>
+      <ion-item class="list-group-item" routerLink="/internoabc/" routerLinkActive="active">{{ 'Inicio Empleados' | translate | async }}</ion-item>
 
     </ion-list>
   </ion-content>
