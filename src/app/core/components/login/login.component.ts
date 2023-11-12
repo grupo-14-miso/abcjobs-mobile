@@ -12,6 +12,7 @@ import { AutenticacionService , usuario,credenciales} from '../../template/servi
 export class LoginComponent implements OnInit {
   targetLanguage : string = "es"
   miuser : credenciales = { email: "", password: "", role: "" }
+  autenticado : boolean = false;
 
   public miformulario: FormGroup = this.fb.group({
 
@@ -48,27 +49,40 @@ export class LoginComponent implements OnInit {
       "password": "joselusigaray",
       "role": "Candidate"
     }
-  this.autenticar(this.miuser)
+    //this.autenticar(this.miuser)
+
+
+
 
     if (this.miformulario.invalid) {
-      console.log(this.miformulario.value);
+
       this.miformulario.markAllAsTouched();
       return;
     }
-    if (this.miformulario.controls['role'].value === 'Candidate') {
-      console.log("persona");
-      this.router.navigate(['/persona']);
-      return;
+
+    this.miuser = {
+      "email": this.miformulario.controls['nombre'].value,
+      "password": this.miformulario.controls['clave'].value,
+      "role": this.miformulario.controls['role'].value,
     }
-    if (this.miformulario.controls['role'].value === 'Company') {
-      console.log("empresa");
-      this.router.navigate(['/empresa']);
-      return;
-    }
-    if (this.miformulario.controls['role'].value === 'Admin') {
-      console.log("empleado");
-      this.router.navigate(['/internoabc']);
-      return;
+    this.autenticar(this.miuser)
+
+    if (this.autenticado){
+      if (this.miformulario.controls['role'].value === 'Candidate') {
+
+        this.router.navigate(['/persona']);
+        return;
+      }
+      if (this.miformulario.controls['role'].value === 'Company') {
+
+        this.router.navigate(['/empresa']);
+        return;
+      }
+      if (this.miformulario.controls['role'].value === 'Admin') {
+
+        this.router.navigate(['/internoabc']);
+        return;
+      }
     }
 
   }
@@ -85,9 +99,31 @@ export class LoginComponent implements OnInit {
     console.log("autenticando--  "+ usr)
     console.log(usr)
     let retorno = this.authService.logonCandidato(usr).subscribe(datos => {
-      console.log(datos)
-    });
-    console.log(retorno)
+      console.log("correcto",datos)
+      this.autenticado = true;
+      if (this.miformulario.controls['role'].value === 'Candidate') {
+
+        this.router.navigate(['/persona']);
+        return;
+      }
+      if (this.miformulario.controls['role'].value === 'Company') {
+
+        this.router.navigate(['/empresa']);
+        return;
+      }
+      if (this.miformulario.controls['role'].value === 'Admin') {
+
+        this.router.navigate(['/internoabc']);
+        return;
+      }
+
+    }, err => {
+      console.log("mal", err)
+      this.autenticado = false;
+    }
+    );
+
+    console.log("retorno",retorno)
   }
 
 
