@@ -9,10 +9,11 @@ import { AppRoutingModule } from "../app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EntrevistasComponent } from './components/entrevistas/entrevistas.component';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
-    CommonModule,IonicModule,AppRoutingModule,ReactiveFormsModule,FormsModule,RouterModule
+    CommonModule,IonicModule,AppRoutingModule,ReactiveFormsModule,FormsModule,RouterModule,CoreModule
   ],
   exports: [
     InternoabcComponent,EncabezadosComponent, ProgramarComponent,AgendarComponent, EntrevistasComponent

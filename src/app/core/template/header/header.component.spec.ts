@@ -2,24 +2,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { NO_ERRORS_SCHEMA } from '@angular/compiler';
-import { EncabezadosComponent } from './encabezados.component';
-import { IonicModule } from '@ionic/angular';
 
-describe('EncabezadosComponent', () => {
-  let component: EncabezadosComponent;
-  let fixture: ComponentFixture<EncabezadosComponent>;
+import { HeaderComponent } from './header.component';
+
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EncabezadosComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [ HeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EncabezadosComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

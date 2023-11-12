@@ -136,8 +136,7 @@ export class AgendarComponent implements OnInit {
         this.listaCandidatos.push(element.candidate)
       })
 
-      console.log("listaCandidatos: ")
-      console.log(this.listaCandidatos)
+
     });
   }
 

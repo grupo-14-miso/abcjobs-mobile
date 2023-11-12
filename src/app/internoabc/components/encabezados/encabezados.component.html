@@ -6,13 +6,13 @@
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list class="list-group">
-      <ion-item class="list-group-item" routerLink="/internoabc/" routerLinkActive="active">Inicio</ion-item>
-      <ion-item class="list-group-item" routerLink="/internoabc/agendar" routerLinkActive="active">Agendar Entrevistas</ion-item>
-      <ion-item  class="list-group-item" routerLink="/internoabc/programar" routerLinkActive="active">Programar Pruebas</ion-item>
-      <ion-item  class="list-group-item" routerLink="/internoabc/resultados" routerLinkActive="active">Consultar Pruebas</ion-item>
-      <ion-item  class="list-group-item" routerLink="/internoabc/registrar" routerLinkActive="active">Registrar Pruebas</ion-item>
-      <ion-item  class="list-group-item" routerLink="/internoabc/entrevistas" routerLinkActive="active">Consultar Entrevistas</ion-item>
-      <ion-item class="list-group-item" routerLink="/persona/" routerLinkActive="active">Inicio Personas</ion-item>
+      <ion-item class="list-group-item" (click)="mandarOpcion('inicio')" >{{ 'Inicio' | translate | async }}</ion-item>
+      <ion-item class="list-group-item" (click)="mandarOpcion('agendar')">{{ 'Agendar Entrevistas' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('programar')">{{ 'Programar Pruebas' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('consultar')">{{ 'Consultar Pruebas' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('registrar')">{{ 'Registrar Resultados' | translate | async }}</ion-item>
+      <ion-item  class="list-group-item" (click)="mandarOpcion('consultar')">{{ 'Consultar Entrevistas' | translate | async }}</ion-item>
+      <ion-item class="list-group-item" routerLink="/login" routerLinkActive="active">{{ 'Desconectarse' | translate | async }}</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

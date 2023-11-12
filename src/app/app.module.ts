@@ -10,12 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmpresaModule } from './empresa/empresa.module';
 import { InternoabcModule } from './internoabc/internoabc.module';
 import { PersonaModule } from './persona/persona.module';
+import { CoreModule } from './core/core.module';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { PersonaModule } from './persona/persona.module';
     InternoabcModule,
     PersonaModule,
     IonicModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
