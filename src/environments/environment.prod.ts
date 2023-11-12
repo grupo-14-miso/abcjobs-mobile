@@ -17,6 +17,7 @@ export const environment = {
   urlEntrevistas: 'https://34.171.225.63.nip.io/interviews',
   githubApiKey: 'AIzaSyBiFpLZKR3CTDQeCfwS19Z-vlWdCTDi3hc',
   baseUrlTranslate : 'https://translation.googleapis.com/language/translate/v2',
-  baseUrl1 : 'https://34.171.225.63.nip.io/'
+  baseUrl1 : 'https://34.171.225.63.nip.io/',
+  urlLoginautenticacion : 'https://34.171.225.63.nip.io/public/login'
 };
 
