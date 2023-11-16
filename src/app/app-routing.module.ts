@@ -9,6 +9,7 @@ import { EmpresaComponent } from './empresa/empresa.component';
 import { ProgramarComponent } from './internoabc/components/programar/programar.component';
 import { EntrevistasComponent } from './internoabc/components/entrevistas/entrevistas.component';
 import { LoginComponent } from './core/components/login/login.component';
+import { RegistroComponent } from './core/components/registro/registro.component';
 
 
 const routes: Routes = [
@@ -63,7 +64,11 @@ const routes: Routes = [
   {
     path: 'resultados',
     component:ResultadosComponent
-  }
+  },
+  {
+    path: 'registro',
+    component:RegistroComponent
+  },
 
 
 ];

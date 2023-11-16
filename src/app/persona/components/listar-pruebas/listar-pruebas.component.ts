@@ -21,9 +21,11 @@ export class ListarPruebasComponent  {
 
 
   getPruebasWs() {
-    this.pruebasService.getPruebas().subscribe(datos => {
+    this.pruebasService.getPruebas(String(window.sessionStorage["key"])).subscribe(datos => {
       this.misexamenes = datos;
       console.log(this.misexamenes)
+      console.log("llave", window.sessionStorage["key"] )
+      console.log("token",window.sessionStorage["token"] )
 
     });
   }

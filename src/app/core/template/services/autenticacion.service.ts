@@ -13,10 +13,16 @@ export class AutenticacionService {
 
   constructor(private http: HttpClient) { }
 
-  public logonCandidato(user: any): Observable<any> {
-    console.log(this.apiUrl)
+  public logonCandidato(user: credenciales): Observable<any> {
+
     return this.http.post(this.apiUrl,user);
   }
+
+  public registerCandidato(user: registro): Observable<any> {
+
+    return this.http.post(environment.urlRegistro ,user);
+  }
+
 
 }
 
@@ -34,4 +40,11 @@ export interface credenciales {
   email: string
   password: string
   role: string
+}
+
+export interface registro {
+  email: string
+  password: string
+  role: string
+  username: string
 }

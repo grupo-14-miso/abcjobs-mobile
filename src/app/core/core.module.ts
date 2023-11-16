@@ -8,11 +8,12 @@ import { TranslatePipe } from './template/pipes/translate.pipe';
 import { LanguageService } from './template/services/language.service';
 import { LoginComponent } from './components/login/login.component';
 import { IonicModule } from '@ionic/angular';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 
 @NgModule({
-  declarations: [ HeaderComponent, TranslatePipe,LoginComponent],
+  declarations: [ HeaderComponent, TranslatePipe,LoginComponent, RegistroComponent],
   imports: [
     CommonModule,
     FormsModule,

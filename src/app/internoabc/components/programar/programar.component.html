@@ -4,29 +4,66 @@
   <ion-content class="ion-padding">
 
 
-    <ion-grid>
-      <ion-row>
-        <ion-col class="ion-padding">
-          <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident dolores architecto esse optio at iusto mollitia ex nemo, tempora a fugit excepturi dicta vel cumque natus eaque ducimus minima! Vel!</div>
-        </ion-col>
-        <ion-col class="ion-padding">
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi deleniti, dignissimos voluptatibus ducimus debitis consectetur ipsa cumque dolorem nobis ad ab doloremque quis, numquam obcaecati illum soluta expedita incidunt officiis!</div>
-        </ion-col>
+
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-row class="ion-padding-bottom">
+        <ion-select
+        fill="outline"
+          (ionChange)=seleccionaEmpresa()
+          formControlName="empresa"
+          shape="round"
+          label="{{ 'Empresa' | translate | async }}"
+          >
+          <ion-select-option  *ngFor="let c of listaEmpresas ; let i =index" value="{{c.company_id}}">{{c.name}}</ion-select-option>
+        </ion-select>
       </ion-row>
 
-      <ion-row>
-        <ion-col class="ion-padding">
-          <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident dolores architecto esse optio at iusto mollitia ex nemo, tempora a fugit excepturi dicta vel cumque natus eaque ducimus minima! Vel!</div>
-        </ion-col>
-        <ion-col class="ion-padding">
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi deleniti, dignissimos voluptatibus ducimus debitis consectetur ipsa cumque dolorem nobis ad ab doloremque quis, numquam obcaecati illum soluta expedita incidunt officiis!</div>
-        </ion-col>
+      <ion-row class="ion-padding-bottom">
+        <ion-select fill="outline"
+          formControlName="oferta"
+          (ionChange)=seleccionaOferta()
+          shape="round"
+          label="{{ 'Oferta' | translate | async }}:"
+          labelPlacement="floating">
+          <ion-select-option  *ngFor="let c of listaOfertas ; let i =index" value="{{c.offer_id}}">{{ c.name | translate | async }} </ion-select-option>
+        </ion-select>
       </ion-row>
 
-    </ion-grid>
+      <ion-row class="ion-padding-bottom">
+        <ion-select fill="outline"
+          formControlName="candidato"
+          (ionChange)=seleccionaCandidato()
+          shape="round"
+          label="{{ 'Candidato' | translate | async }}:"
+          labelPlacement="floating">
+          <ion-select-option  *ngFor="let c of listaPreentrevistas ; let i =index" value="{{c.pre_interview.id_candidate}}">{{c.candidate.Nombre}} {{c.candidate.apellido}}</ion-select-option>
+        </ion-select>
+      </ion-row>
+
+      <ion-row class="ion-padding-bottom">
+        <ion-select fill="outline"
+          formControlName="pruebas"
+          (ionChange)=seleccionaCandidato()
+          shape="round"
+          label="{{ 'Pruebas' | translate | async }}:"
+          labelPlacement="floating">
+          <ion-select-option  *ngFor="let c of listaPreentrevistas ; let i =index" value="{{c.pre_interview.id_candidate}}">{{c.candidate.Nombre}} {{c.candidate.apellido}}</ion-select-option>
+        </ion-select>
+      </ion-row>
+
+
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block"
+            >Submit</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+
 
   </ion-content>
 </div>
-
 
 

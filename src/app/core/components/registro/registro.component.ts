@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { LanguageService } from '../../template/services/language.service'
 import { Router } from '@angular/router';
-import { AutenticacionService , credenciales} from '../../template/services/autenticacion.service'
+import { AutenticacionService , registro} from '../../template/services/autenticacion.service'
+
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegistroComponent implements OnInit {
+
   targetLanguage : string = "es"
-  miuser : credenciales = { email: "", password: "", role: "" }
+  miuser : registro = { email: "", password: "", role: "" ,username: ""}
   autenticado : boolean = false;
 
   public miformulario: FormGroup = this.fb.group({
-    nombre: new FormControl<string>('',[Validators.required]),
+    email: new FormControl<string>('',[Validators.required]),
     clave: new FormControl<string>('',[Validators.required]),
     role: new FormControl<string>('',[Validators.required]),
   });
@@ -31,16 +33,22 @@ export class LoginComponent implements OnInit {
   guardar() {
 
 
-     if (this.miformulario.invalid) {
+    //this.autenticar(this.miuser)
+
+
+
+
+    if (this.miformulario.invalid) {
 
       this.miformulario.markAllAsTouched();
       return;
     }
 
     this.miuser = {
-      "email": this.miformulario.controls['nombre'].value,
+      "email": this.miformulario.controls['email'].value,
       "password": this.miformulario.controls['clave'].value,
       "role": this.miformulario.controls['role'].value,
+      "username": this.miformulario.controls['email'].value
     }
     this.autenticar(this.miuser)
 
@@ -64,6 +72,8 @@ export class LoginComponent implements OnInit {
 
   }
 
+
+
   ponerIdioma(idioma: string): void {
 
     this.languageService.setLanguage(idioma);
@@ -71,10 +81,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-  autenticar(usr: credenciales) {
+  autenticar(usr: registro) {
 
 
-    let retorno = this.authService.logonCandidato(usr).subscribe(datos => {
+    let retorno = this.authService.registerCandidato(usr).subscribe(datos => {
       console.log("correcto",datos)
       this.autenticado = true;
       if (this.miformulario.controls['role'].value === 'Candidate') {
@@ -104,7 +114,10 @@ export class LoginComponent implements OnInit {
     );
 
     console.log("retorno",retorno)
+
   }
 
 
 }
+
+

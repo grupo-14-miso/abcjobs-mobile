@@ -9,16 +9,16 @@ import { Respuesta } from '../prueba/prueba';
   providedIn: 'root'
 })
 export class PruebasService {
-  private apiUrl = environment.urlPruebas;
+  private apiUrlpruebas = environment.urlPruebas;
   private apiGuardarPregunta = environment.urlGuardarPregunta;
   private apiResultados = environment.urlResultados;
   private apiFinalizar = environment.urlFinalizarprueba;
 
   constructor(private http: HttpClient) { }
 
-  public getPruebas(): Observable<Examen[]> {
-    console.log(this.apiUrl)
-    return this.http.get<Examen[]>(this.apiUrl);
+  public getPruebas(candidato:string): Observable<Examen[]> {
+    console.log("lamando el servicio",this.apiUrlpruebas+candidato+"?status=in_progress&status=to_do")
+    return this.http.get<Examen[]>(this.apiUrlpruebas+candidato+"?status=in_progress&status=to_do");
   }
 
   public guardarPregunta(codExamen:Number,rta: Respuesta) {
