@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from "../app-routing.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ExamenComponent } from "./components/examenes/examen.component"
 import { ListarPruebasComponent } from "./components/listar-pruebas/listar-pruebas.component";
 import { PruebaComponent } from "./components/prueba/prueba.component";
@@ -18,6 +18,7 @@ import { TecnicaComponent } from './components/tecnica/tecnica.component';
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { TecnicaComponent } from './components/tecnica/tecnica.component';
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
 
   ],
   exports: [
@@ -34,7 +36,8 @@ import { TecnicaComponent } from './components/tecnica/tecnica.component';
     ListarPruebasComponent,
     PruebaComponent,
     ExamenComponent,
-    EncabezadosComponent
+    EncabezadosComponent,
+    DatosComponent,
   ],
   declarations: [PersonaComponent,
     ListarPruebasComponent,

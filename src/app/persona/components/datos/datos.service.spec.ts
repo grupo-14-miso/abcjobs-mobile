@@ -1,3 +1,4 @@
+/* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EncabezadosComponent } from '../encabezados/encabezados.component';
 import { DatosComponent } from './datos.component';
@@ -10,3 +11,5 @@ import { IonicModule } from '@ionic/angular';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 //Bueno
+
+import { DatosService } from './datos.service';

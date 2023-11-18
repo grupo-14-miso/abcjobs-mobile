@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   baseUrl:'https://34.171.225.63.nip.io/assignments',
   urlPerfiles: 'https://34.171.225.63.nip.io/users/profiles' ,
-  urlPruebas: 'https://34.171.225.63.nip.io/assignments?status=in_progress&status=to_do' ,
+  urlPruebas: 'https://34.171.225.63.nip.io/assignments/' ,
   urlUsuarios: 'https://34.171.225.63.nip.io/users' ,
   urlResultados: 'https://34.171.225.63.nip.io/assignments?status=finished' ,
   urlGuardarPregunta: 'https://34.171.225.63.nip.io/assignments/',
@@ -18,7 +18,9 @@ export const environment = {
   githubApiKey: 'AIzaSyBiFpLZKR3CTDQeCfwS19Z-vlWdCTDi3hc',
   baseUrlTranslate : 'https://translation.googleapis.com/language/translate/v2',
   baseUrl1 : 'https://34.171.225.63.nip.io/',
-  urlLoginautenticacion : 'https://34.171.225.63.nip.io/public/login'
+  urlLoginautenticacion : 'https://34.171.225.63.nip.io/public/login',
+  urlRegistro : 'https://34.171.225.63.nip.io/public/register',
+  urlUpdateDatos : 'https://34.171.225.63.nip.io/users/personal/update',
 };
 
 /*
