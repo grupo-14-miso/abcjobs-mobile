@@ -10,6 +10,7 @@ import { ProgramarComponent } from './internoabc/components/programar/programar.
 import { EntrevistasComponent } from './internoabc/components/entrevistas/entrevistas.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { RegistroComponent } from './core/components/registro/registro.component';
+import { DatosComponent } from './persona/components/datos/datos.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,11 @@ const routes: Routes = [
     path: 'registro',
     component:RegistroComponent
   },
+  {
+    path: 'persona/datos',
+    component:DatosComponent
+  },
+
 
 
 ];

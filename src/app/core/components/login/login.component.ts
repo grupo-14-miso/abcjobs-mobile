@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
       this.autenticado = true;
       if (this.miformulario.controls['role'].value === 'Candidate') {
 
-        window.sessionStorage["key"] = datos.key;
+        window.sessionStorage["llave"] = datos.key;
         window.sessionStorage["token"] = datos.token;
         console.log("llave", window.sessionStorage["key"] )
         console.log("token",window.sessionStorage["token"] )

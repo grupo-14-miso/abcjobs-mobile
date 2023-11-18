@@ -45,7 +45,7 @@ describe('ListarPruebasComponent', () => {
     component = fixture.componentInstance;
 
     // Add null check before accessing the object property
-    pruebasService.getPruebas().subscribe((pruebas: Examen[]) => {
+    pruebasService.getPruebas("6268251315109888").subscribe((pruebas: Examen[]) => {
       component.misexamenes = pruebas;
     });
 
