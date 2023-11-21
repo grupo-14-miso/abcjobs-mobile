@@ -19,6 +19,11 @@ export class DatosService {
     console.log(environment.urlUsuarios + "/" + keycandidato)
     return this.http.get<Candidate>(environment.urlUsuarios + "/" + keycandidato);
   }
+
+  public putDatosLaborales(micandidato: Candidate): Observable<any> {
+    console.log(environment.urlUpdateDatosLaborales)
+    return this.http.put(this.apiUrl, micandidato);
+  }
 }
 
 

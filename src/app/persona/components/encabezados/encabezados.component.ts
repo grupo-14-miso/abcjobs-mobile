@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LanguageService } from 'src/app/core/template/services/language.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encabezados',
@@ -10,7 +10,7 @@ import { LanguageService } from 'src/app/core/template/services/language.service
 export class EncabezadosComponent implements OnInit {
   targetLanguage : string = "es"
   @Output() ponerOpcion = new EventEmitter<string>();
-  constructor(private languageService: LanguageService) { }
+  constructor(private router : Router,private languageService: LanguageService) { }
 
   ngOnInit(): void {
   }

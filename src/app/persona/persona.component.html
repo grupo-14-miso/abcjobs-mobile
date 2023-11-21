@@ -1,111 +1,100 @@
-<app-encabezados (ponerOpcion)="ponerOpcion($event)"></app-encabezados>
+<ion-header>
 
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>ABC Jobs </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>{{ 'Menu Candidato' | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('es')"
+              src="../../assets/es.png"
+              class="mr-2"
+              alt="Español"
+            />
+          </ion-col>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('en')"
+              src="../../assets/en.png"
+              class="mr-2"
+              alt="English"
+            />
+          </ion-col>
 
-      <div slot="secondary">
-        <ion-grid class="ion-padding">
-          <ion-row>
-            <ion-col>
-              <img
-                (click)="ponerIdioma('es')"
-                src="../../assets/es.png"
-                class="mr-2"
-                alt="Español"
-              />
-            </ion-col>
-            <ion-col>
-              <img
-                (click)="ponerIdioma('en')"
-                src="../../assets/en.png"
-                class="mr-2"
-                alt="English"
-              />
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-    </ion-toolbar>
-  </ion-header>
+        </ion-row>
+      </ion-grid>
+    </div>
 
-  <ion-content *ngIf="opcionActual == 'inicio'">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{ "Aspirante" | translate | async }}</ion-card-title>
-        <ion-card-subtitle>{{
-          "Como podemos ayudarlo hoy?" | translate | async
-        }}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list id="mimenu">
-          <ion-item (click)="ponerOpcion('datos')" id="datos">
-            <ion-thumbnail slot="start">
-              <img alt="datos" src="./assets/application_2245126.png" />
-            </ion-thumbnail>
-            <ion-label>{{ "Datos Personales" | translate | async }}s</ion-label>
-          </ion-item>
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon name="exit-outline"  (click)="go('login')" ></ion-icon>
+          </ion-col>
 
-          <ion-item (click)="ponerOpcion('laboral')" id="laboral">
-            <ion-thumbnail slot="start">
-              <img alt="experiencia" src="./assets/work-from-home.png" />
-            </ion-thumbnail>
-            <ion-label>{{
-              "Experiencia Laboral" | translate | async
-            }}</ion-label>
-          </ion-item>
+        </ion-row>
+      </ion-grid>
+    </div>
 
-          <ion-item (click)="ponerOpcion('academica')" id="academica">
-            <ion-thumbnail slot="start">
-              <img alt="academica" src="./assets/education_3976625.png" />
-            </ion-thumbnail>
-            <ion-label>{{
-              "Información Academica" | translate | async
-            }}</ion-label>
-          </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
 
-          <ion-item (click)="ponerOpcion('tecnica')" id="tecnica">
-            <ion-thumbnail slot="start">
-              <img alt="tecnica" src="./assets/working_4727424.png" />
-            </ion-thumbnail>
-            <ion-label>{{
-              "Información Técnica" | translate | async
-            }}</ion-label>
-          </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ "Aspirante" | translate | async }}</ion-card-title>
+      <ion-card-subtitle>{{
+        "Como podemos ayudarlo hoy?" | translate | async
+      }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list id="mimenu">
+        <ion-item [routerLink]="['/persona/datos']" id="datos">
+          <ion-thumbnail slot="start">
+            <img alt="datos" src="./assets/application_2245126.png" />
+          </ion-thumbnail>
+          <ion-label>{{ "Datos Personales" | translate | async }}s</ion-label>
+        </ion-item>
 
-          <ion-item (click)="ponerOpcion('listar-pruebas')" id="proceso">
-            <ion-thumbnail slot="start">
-              <img alt="Proceso" src="./assets/exam_7439563.png" />
-            </ion-thumbnail>
-            <ion-label>{{ "Procesos" | translate | async }}</ion-label>
-          </ion-item>
+        <ion-item [routerLink]="['/persona/laboral']" id="laboral">
+          <ion-thumbnail slot="start">
+            <img alt="experiencia" src="./assets/work-from-home.png" />
+          </ion-thumbnail>
+          <ion-label>{{ "Experiencia Laboral" | translate | async }}</ion-label>
+        </ion-item>
 
-          <ion-item id="resultados" (click)="ponerOpcion('resultados')">
-            <ion-thumbnail slot="start">
-              <img alt="Resultado" src="./assets/investigacion.png" />
-            </ion-thumbnail>
-            <ion-label>{{
-              "Resultados Procesos" | translate | async
-            }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
+        <ion-item [routerLink]="['/persona/academica']" id="academica">
+          <ion-thumbnail slot="start">
+            <img alt="academica" src="./assets/education_3976625.png" />
+          </ion-thumbnail>
+          <ion-label>{{
+            "Información Academica" | translate | async
+          }}</ion-label>
+        </ion-item>
 
-  <ion-content *ngIf="opcionActual != 'inicio'">
-    <app-resultados *ngIf="opcionActual == 'resultados'"></app-resultados>
-    <app-prueba *ngIf="opcionActual == 'procesos'"></app-prueba>
-    <app-datos *ngIf="opcionActual == 'datos'"></app-datos>
-    <app-laboral *ngIf="opcionActual == 'laboral'"></app-laboral>
-    <app-academica *ngIf="opcionActual == 'academica'"></app-academica>
-    <app-tecnica *ngIf="opcionActual == 'tecnica'"> </app-tecnica>
-    <app-listar-pruebas
-      *ngIf="opcionActual == 'listar-pruebas'"
-    ></app-listar-pruebas>
-  </ion-content>
-</div>
+        <ion-item [routerLink]="['/persona/idiomas']" id="tecnica">
+          <ion-thumbnail slot="start">
+            <img alt="tecnica" src="./assets/working_4727424.png" />
+          </ion-thumbnail>
+          <ion-label>{{ "Información Idiomas" | translate | async }}</ion-label>
+        </ion-item>
+
+        <ion-item [routerLink]="['/persona/procesos']" id="proceso">
+          <ion-thumbnail slot="start">
+            <img alt="Proceso" src="./assets/exam_7439563.png" />
+          </ion-thumbnail>
+          <ion-label>{{ "Procesos" | translate | async }}</ion-label>
+        </ion-item>
+
+        <ion-item id="resultados" [routerLink]="['/persona/resultados']">
+          <ion-thumbnail slot="start">
+            <img alt="Resultado" src="./assets/investigacion.png" />
+          </ion-thumbnail>
+          <ion-label>{{ "Resultados Procesos" | translate | async }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

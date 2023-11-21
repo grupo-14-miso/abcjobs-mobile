@@ -1,1 +1,156 @@
-<p>laboral works!</p>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Datos Personales" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('es')"
+              src="../../assets/es.png"
+              class="mr-2"
+              alt="Español"
+            />
+          </ion-col>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('en')"
+              src="../../assets/en.png"
+              class="mr-2"
+              alt="English"
+            />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon
+              name="return-down-back-outline"
+              (click)="go('persona')"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-toast
+    [isOpen]="isToastOpen"
+    message="Se Guardo Correctamente"
+    [duration]="2000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast>
+
+  <form
+    [formGroup]="ionicForm"
+    (ngSubmit)="guardar2(ionicForm.value)"
+    novalidate >
+    <ion-row>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="cargo"
+          shape="round"
+          label="{{ 'Cargo' | translate | async }}:"
+          type="url"
+          labelPlacement="floating"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="ciudad"
+          shape="round"
+          label="{{ 'Ciudad' | translate | async }}:"
+          type="url"
+          labelPlacement="floating">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="empresa"
+          shape="round"
+          label="{{ 'Empresa' | translate | async }}:"
+          type="url"
+          ng-model="candidatoactual.apellido"
+          labelPlacement="floating"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="fecha_inicio"
+          shape="round"
+          label="{{ 'Fecha Inicio' | translate | async }}:"
+          type="url"
+          ng-model="candidatoactual.apellido"
+          labelPlacement="floating"
+        >
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="fecha_fin"
+          shape="round"
+          label="{{ 'Fecha Fin' | translate | async }}:"
+          labelPlacement="floating"
+        ></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="pais"
+          shape="round"
+          label="{{ 'Pais' | translate | async }}:"
+          type="url"
+          labelPlacement="floating"
+        >
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="rol"
+          shape="round"
+          label="{{ 'rol' | translate | async }}:"
+          type="url"
+          labelPlacement="floating"
+        >
+        </ion-input>
+      </ion-col>
+
+
+      <ion-row>
+
+        <ion-button type="button" class="btn btn-danger ml-2" (click)="goBack()"
+          >Cerrar</ion-button
+        >
+        <ion-button
+        type="submit"
+        class="btn btn-primary ml-2"
+        [disabled]="!ionicForm.valid"
+        >Guardar</ion-button
+      >
+      </ion-row>
+    </ion-row>
+  </form>
+  </ion-content>

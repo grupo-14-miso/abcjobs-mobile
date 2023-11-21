@@ -11,6 +11,8 @@ import { EntrevistasComponent } from './internoabc/components/entrevistas/entrev
 import { LoginComponent } from './core/components/login/login.component';
 import { RegistroComponent } from './core/components/registro/registro.component';
 import { DatosComponent } from './persona/components/datos/datos.component';
+import { TecnicaComponent } from './persona/components/tecnica/tecnica.component';
+import { LaboralComponent } from './persona/components/laboral/laboral.component';
 
 
 const routes: Routes = [
@@ -73,6 +75,14 @@ const routes: Routes = [
   {
     path: 'persona/datos',
     component:DatosComponent
+  },
+  {
+    path: 'persona/laboral',
+    component:LaboralComponent
+  },
+  {
+    path: 'persona/tecnica',
+    component:TecnicaComponent
   },
 
 

@@ -36,7 +36,7 @@ import { TecnicaComponent } from './components/tecnica/tecnica.component';
     ListarPruebasComponent,
     PruebaComponent,
     ExamenComponent,
-    EncabezadosComponent,
+
     DatosComponent,
   ],
   declarations: [PersonaComponent,
@@ -44,7 +44,6 @@ import { TecnicaComponent } from './components/tecnica/tecnica.component';
     PruebaComponent,
     ExamenComponent,
     ResultadosComponent,
-    EncabezadosComponent,
     DatosComponent,
     LaboralComponent,
     AcademicaComponent,

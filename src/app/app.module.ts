@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import { EmpresaModule } from './empresa/empresa.module';
 import { InternoabcModule } from './internoabc/internoabc.module';
@@ -22,13 +22,14 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot([]),
+    IonicModule.forRoot({}),
     HttpClientModule,
+    BrowserAnimationsModule,
+
     EmpresaModule,
     InternoabcModule,
     PersonaModule,
-    IonicModule.forRoot(),
-    BrowserAnimationsModule,
     CoreModule
   ],
   providers: [],

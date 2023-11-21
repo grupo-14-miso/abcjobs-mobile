@@ -1,8 +1,10 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
 import { DatosService, Candidate } from './datos.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/template/services/language.service';
+import { PersonaComponent } from '../../persona.component';
+
 
 
 
@@ -12,9 +14,12 @@ import { LanguageService } from 'src/app/core/template/services/language.service
   styleUrls: ['./datos.component.css']
 })
 export class DatosComponent implements OnInit {
+  @Output() ponerOpcion = new EventEmitter<string>();
   llavecandidato!: string;
   targetLanguage : string = "es"
   candidatoactual!: Candidate;
+  micomponent = PersonaComponent;
+
   public elcandidatoactual :  Candidate = { Nombre: "XX", apellido:"YY", ciudad_nacimiento:"", ciudad_residencia:"", documento:"", educacion:[], email:"", estado_civil:"", experiencia:[], fecha_nacimiento:"", genero:"", id_candidato:"", idiomas:[], key:{id:0,kind:""}, lenguajes_programacion:[], nacionalidad:"", pais_nacimiento:"", pais_residencia:"", rol:[], segundo_apellido:"", segundo_nombre:"", tecnologias_herramientas:[], telefono:"", tipo_documento:""   };
 
   isToastOpen = false;
@@ -52,6 +57,13 @@ export class DatosComponent implements OnInit {
     this.isToastOpen = isOpen;
   }
 
+  goBack() {
+    this.router.navigate(['persona']);
+  }
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
+  }
 
 
   constructor(private fb: FormBuilder,private datosService: DatosService,private router : Router,private languageService: LanguageService) {
@@ -90,6 +102,16 @@ export class DatosComponent implements OnInit {
   }
 
 
+  mandarOpcion(opcion: string): void {
+    console.log("mandarOpcion"+opcion)
+    this.ponerOpcion.emit(opcion);
+  }
+
+
+  iniciar(): void {
+
+    this.router.navigate(['persona']);
+  }
 
 
   ponerIdioma(idioma: string): void {
