@@ -1,5 +1,5 @@
 import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
-import { DatosService, Candidate } from './datos.service';
+import { DatosService, Candidate ,Profile} from './datos.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/template/services/language.service';
@@ -20,7 +20,14 @@ export class DatosComponent implements OnInit {
   candidatoactual!: Candidate;
   micomponent = PersonaComponent;
 
-  public elcandidatoactual :  Candidate = { Nombre: "XX", apellido:"YY", ciudad_nacimiento:"", ciudad_residencia:"", documento:"", educacion:[], email:"", estado_civil:"", experiencia:[], fecha_nacimiento:"", genero:"", id_candidato:"", idiomas:[], key:{id:0,kind:""}, lenguajes_programacion:[], nacionalidad:"", pais_nacimiento:"", pais_residencia:"", rol:[], segundo_apellido:"", segundo_nombre:"", tecnologias_herramientas:[], telefono:"", tipo_documento:""   };
+  profiles: Profile[] = [];
+  roles: string[] = [];
+  languages: string[] = [];
+  tools: string[] = [];
+  skills: string[] = [];
+
+
+  public elcandidatoactual? :  Candidate;
 
   isToastOpen = false;
 
@@ -50,6 +57,7 @@ export class DatosComponent implements OnInit {
     experiencia: new FormControl<string[]>([]),
     idiomas: new FormControl<string[]>([]),
     rol: new FormControl<string[]>([]),
+    //soft_skill: new FormControl<string[]>([]),
 
   });
 
@@ -82,8 +90,41 @@ export class DatosComponent implements OnInit {
       }
     }
 
+
+    this.getProfiles();
+
   }
 
+
+
+  getProfiles() {
+
+    this.datosService.getProfiles().subscribe({
+      next: (data) => {
+        this.profiles = data;
+        this.filterProfilesByType();
+
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
+  filterProfilesByType() {
+    this.roles = this.getNamesByType('Rol');
+    console.log(this.roles);
+    this.languages = this.getNamesByType('programming_languages');
+    this.skills = this.getNamesByType('soft_skill');
+    this.tools = this.getNamesByType('tools');
+  }
+
+  getNamesByType(type: string): string[] {
+    return this.profiles
+      .filter((profile) => profile.type === type)
+      .map((profile) => profile.names)
+      .reduce((acc, names) => acc.concat(names), []);
+  }
 
 
   getDatosWs() {

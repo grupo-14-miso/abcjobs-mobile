@@ -46,190 +46,262 @@
     [duration]="2000"
     (didDismiss)="setOpen(false)"
   ></ion-toast>
-
+  <div class="row">
   <form
+  role="form"
     [formGroup]="ionicForm"
     (ngSubmit)="guardar2(ionicForm.value)"
     novalidate
   >
-    <ion-row>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="Nombre"
-          shape="round"
-          label="{{ 'Primer Nombre' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="segundo_nombre"
-          shape="round"
-          label="{{ 'Segundo Nombre' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-    </ion-row>
+    <ion-grid >
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="Nombre"
+            shape="round"
+            label="{{ 'Primer Nombre' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="segundo_nombre"
+            shape="round"
+            label="{{ 'Segundo Nombre' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+      </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="apellido"
-          shape="round"
-          label="{{ 'Primer Apellido' | translate | async }}:"
-          type="url"
-          ng-model="candidatoactual.apellido"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="segundo_apellido"
-          shape="round"
-          label="{{ 'Segundo Apellido' | translate | async }}:"
-          type="url"
-          ng-model="candidatoactual.apellido"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-    </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="apellido"
+            shape="round"
+            label="{{ 'Primer Apellido' | translate | async }}:"
+            type="url"
+            ng-model="candidatoactual.apellido"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="segundo_apellido"
+            shape="round"
+            label="{{ 'Segundo Apellido' | translate | async }}:"
+            type="url"
+            ng-model="candidatoactual.apellido"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+      </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="tipo_documento"
-          shape="round"
-          label="{{ 'Tipo Documento' | translate | async }}:"
-          labelPlacement="floating"
-        ></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="documento"
-          shape="round"
-          label="{{ 'No Documento' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="tipo_documento"
+            shape="round"
+            label="{{ 'Tipo Documento' | translate | async }}:"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="documento"
+            shape="round"
+            label="{{ 'No Documento' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="email"
+            shape="round"
+            label="{{ 'Email' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="ciudad_nacimiento"
+            shape="round"
+            label="{{ 'Ciudad Nacimiento' | translate | async }}:"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="estado_civil"
+            shape="round"
+            label="{{ 'Estado Civil' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="genero"
+            shape="round"
+            label="{{ 'Genero' | translate | async }}:"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="pais_nacimiento"
+            shape="round"
+            label="{{ 'Pais Nacimiento' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="pais_residencia"
+            shape="round"
+            label="{{ 'Pais Residencia' | translate | async }}:"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="telefono"
+            shape="round"
+            label="{{ 'Telefono' | translate | async }}:"
+            type="url"
+            labelPlacement="floating"
+          >
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input
+            fill="outline"
+            formControlName="ciudad_residencia"
+            shape="round"
+            label="{{ 'Ciudad Residencia' | translate | async }}:"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row><label for="rol">{{ 'Rol' | translate | async }}:</label></ion-row>
+      <ion-row>
+        <div class="form-group">
+
+          <select class="form-control" id="rol" formControlName="rol" multiple>
+            <option value="" disabled selected>Seleccione...</option>
+            <option *ngFor="let name of roles" [value]="name">{{ name | translate | async }}</option>
+          </select>
+        </div>
+
+      </ion-row>
+
+      <ion-row><label for="language">{{ 'Lenguajes Programacion' | translate | async }}:</label></ion-row>
+      <ion-row>
+
+
+        <div class="form-group col-auto">
+          <select class="form-control col-auto"  id="language"  formControlName="lenguajes_programacion"  multiple  >
+            <option value="" disabled selected>Seleccione...</option>
+            <option *ngFor="let name of languages" [value]="name">
+              {{ name }}
+            </option>
+          </select>
+        </div>
+
+      </ion-row>
+
+
+
+      <ion-row class="form-group col-md-6">
+      <label for="tools">{{ 'Tecnologias' | translate | async }}:</label>
+      </ion-row>
+
+      <ion-row class="form-group col-md-6">
+
+
+          <div class="form-group col-md-6">
+
+            <select class="form-control form-control-lg" id="tools" formControlName="tecnologias_herramientas" multiple>
+              <option value="" disabled selected>Seleccione...</option>
+              <option *ngFor="let name of tools" [value]="name">{{ name }}</option>
+            </select>
+          </div>
+
+      </ion-row>
+
+      <ion-row class="form-group col-md-6">
+        <label for="skill">{{ 'Habilidades blandas' | translate | async }}:</label>
+      </ion-row>
+
+      <ion-row class="form-group col-md-6">
+      <div class="form-group col-lg-3">
+
+        <select class="form-control" id="skill"
+        multiple>
+          <option value="" disabled selected>Seleccione...</option>
+          <option *ngFor="let name of skills" [value]="name">{{ name | translate | async }}</option>
+        </select>
+      </div>
+      </ion-row>
+
+
+
+
+
+
+
+      <ion-row>
+        <ion-button type="button" class="btn btn-danger ml-2" (click)="goBack()"
+          >Cerrar</ion-button
         >
-        </ion-input>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="email"
-          shape="round"
-          label="{{ 'Email' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
+        <ion-button
+          type="submit"
+          class="btn btn-primary ml-2"
+          [disabled]="!ionicForm.valid"
+          >Guardar</ion-button
         >
-        </ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="ciudad_nacimiento"
-          shape="round"
-          label="{{ 'Ciudad Nacimiento' | translate | async }}:"
-          labelPlacement="floating"
-        ></ion-input>
-      </ion-col>
-    </ion-row>
+      </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="estado_civil"
-          shape="round"
-          label="{{ 'Estado Civil' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="genero"
-          shape="round"
-          label="{{ 'Genero' | translate | async }}:"
-          labelPlacement="floating"
-        ></ion-input>
-      </ion-col>
-    </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="pais_nacimiento"
-          shape="round"
-          label="{{ 'Pais Nacimiento' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="pais_residencia"
-          shape="round"
-          label="{{ 'Pais Residencia' | translate | async }}:"
-          labelPlacement="floating"
-        ></ion-input>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-padding-bottom">
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="telefono"
-          shape="round"
-          label="{{ 'Telefono' | translate | async }}:"
-          type="url"
-          labelPlacement="floating"
-        >
-        </ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input
-          fill="outline"
-          formControlName="ciudad_residencia"
-          shape="round"
-          label="{{ 'Ciudad Residencia' | translate | async }}:"
-          labelPlacement="floating"
-        ></ion-input>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-
-      <ion-button type="button" class="btn btn-danger ml-2" (click)="goBack()"
-        >Cerrar</ion-button
-      >
-      <ion-button
-      type="submit"
-      class="btn btn-primary ml-2"
-      [disabled]="!ionicForm.valid"
-      >Guardar</ion-button
-    >
-    </ion-row>
+    </ion-grid>
   </form>
+</div>
 </ion-content>

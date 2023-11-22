@@ -24,8 +24,23 @@ export class DatosService {
     console.log(environment.urlUpdateDatosLaborales)
     return this.http.put(this.apiUrl, micandidato);
   }
+
+  getProfiles(): Observable<Profile[]> {
+    return this.http.get<Profile[]>(environment.urlPerfiles)
+  }
+
 }
 
+
+export class Profile {
+  names: string[];
+  type: string;
+
+  constructor(names: string[], type: string) {
+    this.names = names;
+    this.type = type;
+  }
+}
 
 
 export interface Candidate {
@@ -41,18 +56,19 @@ export interface Candidate {
   fecha_nacimiento: string
   genero: string
   id_candidato: string
-  idiomas: Idioma[]
+  idiomas?: Idioma[]
   key: Key
-  lenguajes_programacion: string[]
+  lenguajes_programacion?: string[]
   nacionalidad: string
   pais_nacimiento: string
   pais_residencia: string
-  rol: string[]
+  rol?: string[]
   segundo_apellido: string
   segundo_nombre: string
-  tecnologias_herramientas: string[]
+  tecnologias_herramientas?: string[]
   telefono: string
   tipo_documento: string
+  soft_skill?: string[]
 }
 
 export interface Educacion {
