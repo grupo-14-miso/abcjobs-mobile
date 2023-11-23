@@ -57,7 +57,7 @@ export class DatosComponent implements OnInit {
     experiencia: new FormControl<string[]>([]),
     idiomas: new FormControl<string[]>([]),
     rol: new FormControl<string[]>([]),
-    //soft_skill: new FormControl<string[]>([]),
+    soft_skill: new FormControl<string[]>([]),
 
   });
 
@@ -84,10 +84,7 @@ export class DatosComponent implements OnInit {
 
     if(this.llavecandidato === undefined){
       this.llavecandidato = String( sessionStorage.getItem("llave"));
-      if (this.llavecandidato) {
-        this.getDatosWs();
 
-      }
     }
 
 
@@ -113,7 +110,6 @@ export class DatosComponent implements OnInit {
 
   filterProfilesByType() {
     this.roles = this.getNamesByType('Rol');
-    console.log(this.roles);
     this.languages = this.getNamesByType('programming_languages');
     this.skills = this.getNamesByType('soft_skill');
     this.tools = this.getNamesByType('tools');
@@ -132,7 +128,7 @@ export class DatosComponent implements OnInit {
     this.datosService.getDatos(this.llavecandidato).subscribe(datos => {
 
       this.candidatoactual = datos;
-      console.log(datos);
+      console.log("Este es el candidato que trajo",datos);
       this.ionicForm.setValue(this.candidatoactual)
 
 
@@ -142,11 +138,6 @@ export class DatosComponent implements OnInit {
 
   }
 
-
-  mandarOpcion(opcion: string): void {
-    console.log("mandarOpcion"+opcion)
-    this.ponerOpcion.emit(opcion);
-  }
 
 
   iniciar(): void {
@@ -165,39 +156,15 @@ export class DatosComponent implements OnInit {
 
   guardar2(author: Candidate){
     this.candidatoactual = author
-    console.info("The author was created: ", this.candidatoactual)
+    console.info("voy a guardar esto ", this.candidatoactual)
     this.setOpen(true)
     this.putDatosWs(this.candidatoactual);
     //this.ionicForm.reset();
   }
 
-  guardar = () => {
-    if (this.ionicForm.valid) {
-      this.candidatoactual.Nombre = this.ionicForm.get('Nombre')?.value?.toString() ?? '';
-      this.candidatoactual.apellido = this.ionicForm.get('apellido')?.value?.toString()?? ''
-      this.candidatoactual.documento = this.ionicForm.get('documento')?.value?.toString()?? ''
-      this.candidatoactual.email = this.ionicForm.get('email')?.value?.toString() ?? '';
-      this.candidatoactual.ciudad_nacimiento= this.ionicForm.get('ciudad_nacimiento')?.value?.toString() ?? '';
-      this.candidatoactual.fecha_nacimiento= this.ionicForm.get('fecha_nacimiento')?.value?.toString() ?? '';
-      console.log( "esto va a guardar"+JSON.stringify(this.candidatoactual));
-
-      this.putDatosWs(this.candidatoactual);
-      this.router.navigate(['persona/datos']);
-
-
-      return false;
-    } else {
-
-      return console.log('Please provide all the required values!');
-    }
-
-
-
-  }
-
-  putDatosWs(micandidato: Candidate) {
+   putDatosWs(micandidato: Candidate) {
     this.datosService.putDatos(micandidato).subscribe(datos => {
-      console.log(datos)
+      console.log("retorno del putdatos",datos)
     });
   }
 

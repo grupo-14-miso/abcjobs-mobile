@@ -1,13 +1,10 @@
 
 import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
-import { DatosService, Candidate ,Experiencum} from '../datos/datos.service';
+import { DatosService, Candidate ,Experiencum,actualizaExperiencia} from '../datos/datos.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/template/services/language.service';
 import { PersonaComponent } from '../../persona.component';
-
-
-
 
 
 @Component({
@@ -19,12 +16,12 @@ import { PersonaComponent } from '../../persona.component';
 export class LaboralComponent implements OnInit {
   @Output() ponerOpcion = new EventEmitter<string>();
   llavecandidato!: string;
-  targetLanguage : string = "es"
   candidatoactual!: Candidate;
-  experienciaLaboral!: Experiencum[];
-  micomponent = PersonaComponent;
+  targetLanguage : string = "es"
+  miscambios: actualizaExperiencia= {id_candidato:"",trabajos:[]};
 
-  public elcandidatoactual :  Candidate = { Nombre: "XX", apellido:"YY", ciudad_nacimiento:"", ciudad_residencia:"", documento:"", educacion:[], email:"", estado_civil:"", experiencia:[], fecha_nacimiento:"", genero:"", id_candidato:"", idiomas:[], key:{id:0,kind:""}, lenguajes_programacion:[], nacionalidad:"", pais_nacimiento:"", pais_residencia:"", rol:[], segundo_apellido:"", segundo_nombre:"", tecnologias_herramientas:[], telefono:"", tipo_documento:""   };
+  posicion = 0;
+  esnuevo = false;
 
   isToastOpen = false;
 
@@ -53,9 +50,10 @@ export class LaboralComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder,private datosService: DatosService,private router : Router,private languageService: LanguageService) {
+  constructor( private fb: FormBuilder,private datosService: DatosService,private router : Router,private languageService: LanguageService) {
     this.llavecandidato = String( sessionStorage.getItem("llave"));
     this.getDatosWs();
+
 
   }
 
@@ -63,11 +61,9 @@ export class LaboralComponent implements OnInit {
 
     if(this.llavecandidato === undefined){
       this.llavecandidato = String( sessionStorage.getItem("llave"));
-      if (this.llavecandidato) {
-        this.getDatosWs();
 
-      }
     }
+
 
   }
 
@@ -76,24 +72,24 @@ export class LaboralComponent implements OnInit {
   getDatosWs() {
 
     this.datosService.getDatos(this.llavecandidato).subscribe(datos => {
-
       this.candidatoactual = datos;
       console.log(datos);
-      this.experienciaLaboral = this.candidatoactual.experiencia;
-      this.ionicForm.setValue(this.experienciaLaboral[0] )
+      if (datos.experiencia.length > 0) {
+        this.miscambios.id_candidato = datos.id_candidato
+        this.miscambios.trabajos= datos.experiencia
+        this.ionicForm.setValue(this.miscambios.trabajos[this.posicion] )
+      }
+      else{
+        this.miscambios.id_candidato = datos.id_candidato
+        this.miscambios.trabajos = []
 
+      }
 
     });
 
-
-
   }
 
 
-  mandarOpcion(opcion: string): void {
-    console.log("mandarOpcion"+opcion)
-    this.ponerOpcion.emit(opcion);
-  }
 
 
   iniciar(): void {
@@ -108,46 +104,59 @@ export class LaboralComponent implements OnInit {
     this.targetLanguage = idioma;
   }
 
-
-
-  guardar2(author: Experiencum){
-    this.experienciaLaboral[0] = author;
-    this.candidatoactual.experiencia = this.experienciaLaboral
-    console.info("The author was created: ", this.candidatoactual)
-    this.setOpen(true)
-    this.putDatosWs(this.candidatoactual);
-    //this.ionicForm.reset();
+  setPosicion(posicion: number): void {
+    this.posicion = posicion;
+    this.ionicForm.setValue(this.miscambios.trabajos[this.posicion] )
   }
 
-  guardar = () => {
-    if (this.ionicForm.valid) {
-      this.candidatoactual.experiencia[0].cargo = this.ionicForm.get('cargo')?.value?.toString() ?? '';
-      this.candidatoactual.experiencia[0].ciudad = this.ionicForm.get('ciudad')?.value?.toString()?? ''
-      this.candidatoactual.experiencia[0].empresa = this.ionicForm.get('empresa')?.value?.toString()?? ''
-      this.candidatoactual.experiencia[0].fecha_fin = this.ionicForm.get('fecha_fin')?.value?.toString() ?? '';
-      this.candidatoactual.experiencia[0].fecha_inicio= this.ionicForm.get('fecha_inicio')?.value?.toString() ?? '';
-      this.candidatoactual.experiencia[0].pais= this.ionicForm.get('pais')?.value?.toString() ?? '';
-      console.log( "esto va a guardar"+JSON.stringify(this.candidatoactual));
 
-      this.putDatosWs(this.candidatoactual);
-      this.router.navigate(['persona']);
-
-
-      return false;
-    } else {
-
-      return console.log('Please provide all the required values!');
+  guardar2(experiencia: Experiencum){
+    if (this.esnuevo){
+      this.miscambios.trabajos.push(experiencia);
+    }
+    else{
+        this.miscambios.trabajos[this.posicion] = experiencia;
     }
 
 
+    console.info("Experiencia guardada: ", this.miscambios)
+    this.setOpen(true)
+    this.actualizarDatosLaborales(this.miscambios);
+    this.esnuevo = false;
+    //this.ionicForm.reset();
+  }
+
+  nuevo(){
+    this.ionicForm.reset();
+    this.esnuevo = true;
 
   }
 
-  putDatosWs(micandidato: Candidate) {
-    this.datosService.putDatosLaborales(micandidato).subscribe(datos => {
+
+
+
+
+  actualizarDatosLaborales(micandidato: actualizaExperiencia) {
+    this.candidatoactual.experiencia = micandidato.trabajos
+
+    this.datosService.putDatosLaborales(this.candidatoactual).subscribe(datos => {
+
+      this.esnuevo = false;
+      console.log("retorno del putDatosLaborales",datos)
+    });
+
+
+  }
+
+  postDatosWs(micandidato: Candidate) {
+    console.log(micandidato)
+    this.datosService.postDatosUsuario(micandidato).subscribe(datos => {
       console.log(datos)
+
     });
   }
+
+
 
 }
 

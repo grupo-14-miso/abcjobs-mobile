@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,12 +21,18 @@ export class DatosService {
   }
 
   public putDatosLaborales(micandidato: Candidate): Observable<any> {
-    console.log(environment.urlUpdateDatosLaborales)
-    return this.http.put(this.apiUrl, micandidato);
+
+    console.log("data a actualizar por el servicio ",micandidato)
+    return this.http.put(environment.urlUpdateDatosLaborales, micandidato);
   }
 
-  getProfiles(): Observable<Profile[]> {
+  public getProfiles(): Observable<Profile[]> {
     return this.http.get<Profile[]>(environment.urlPerfiles)
+  }
+
+  public postDatosUsuario(micandidato: Candidate): Observable<any> {
+    console.log(environment.urlUsuarios)
+    return this.http.post(environment.urlUsuarios, micandidato);
   }
 
 }
@@ -42,6 +48,10 @@ export class Profile {
   }
 }
 
+export interface actualizaExperiencia {
+  id_candidato: string
+  trabajos: Experiencum[]
+}
 
 export interface Candidate {
   Nombre: string

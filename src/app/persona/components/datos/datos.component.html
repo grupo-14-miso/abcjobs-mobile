@@ -259,7 +259,7 @@
 
           <div class="form-group col-md-6">
 
-            <select class="form-control form-control-lg" id="tools" formControlName="tecnologias_herramientas" multiple>
+            <select class="form-control form-control-lg" id="tecnologias" formControlName="tecnologias_herramientas" multiple>
               <option value="" disabled selected>Seleccione...</option>
               <option *ngFor="let name of tools" [value]="name">{{ name }}</option>
             </select>
@@ -268,19 +268,19 @@
       </ion-row>
 
       <ion-row class="form-group col-md-6">
-        <label for="skill">{{ 'Habilidades blandas' | translate | async }}:</label>
+
+        <div class="form-group col-md-6">
+
+          <select class="form-control form-control-lg" id="softskills" formControlName="soft_skill" multiple>
+            <option value="" disabled selected>Seleccione...</option>
+            <option *ngFor="let name of skills" [value]="name">{{ name | translate | async }}</option>
+          </select>
+        </div>
+
+
       </ion-row>
 
-      <ion-row class="form-group col-md-6">
-      <div class="form-group col-lg-3">
 
-        <select class="form-control" id="skill"
-        multiple>
-          <option value="" disabled selected>Seleccione...</option>
-          <option *ngFor="let name of skills" [value]="name">{{ name | translate | async }}</option>
-        </select>
-      </div>
-      </ion-row>
 
 
 

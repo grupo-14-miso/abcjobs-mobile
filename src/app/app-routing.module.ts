@@ -13,6 +13,7 @@ import { RegistroComponent } from './core/components/registro/registro.component
 import { DatosComponent } from './persona/components/datos/datos.component';
 import { TecnicaComponent } from './persona/components/tecnica/tecnica.component';
 import { LaboralComponent } from './persona/components/laboral/laboral.component';
+import { AcademicaComponent } from './persona/components/academica/academica.component';
 
 
 const routes: Routes = [
@@ -81,8 +82,12 @@ const routes: Routes = [
     component:LaboralComponent
   },
   {
-    path: 'persona/tecnica',
-    component:TecnicaComponent
+    path: 'persona/academica',
+    component:AcademicaComponent
+  },
+  {
+    path: 'persona/idiomas',
+    component:AcademicaComponent
   },
 
 

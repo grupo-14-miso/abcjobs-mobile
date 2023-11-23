@@ -40,6 +40,8 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
+
   <ion-toast
     [isOpen]="isToastOpen"
     message="Se Guardo Correctamente"
@@ -83,7 +85,7 @@
           shape="round"
           label="{{ 'Empresa' | translate | async }}:"
           type="url"
-          ng-model="candidatoactual.apellido"
+
           labelPlacement="floating"
         >
         </ion-input>
@@ -95,7 +97,7 @@
           shape="round"
           label="{{ 'Fecha Inicio' | translate | async }}:"
           type="url"
-          ng-model="candidatoactual.apellido"
+
           labelPlacement="floating"
         >
         </ion-input>
@@ -137,20 +139,61 @@
         >
         </ion-input>
       </ion-col>
+      <ion-col>
 
+      </ion-col>
 
-      <ion-row>
-
-        <ion-button type="button" class="btn btn-danger ml-2" (click)="goBack()"
-          >Cerrar</ion-button
-        >
-        <ion-button
-        type="submit"
-        class="btn btn-primary ml-2"
-        [disabled]="!ionicForm.valid"
-        >Guardar</ion-button
+    </ion-row>
+    <ion-row>
+      <ion-button type="button" class="btn btn-danger ml-2" (click)="nuevo()"
+      >Nuevo</ion-button
+    >
+      <ion-button type="button" class="btn btn-danger ml-2" (click)="goBack()"
+        >Cerrar</ion-button
       >
-      </ion-row>
+      <ion-button
+      type="submit"
+      class="btn btn-primary ml-2"
+      [disabled]="!ionicForm.valid"
+      >Guardar</ion-button
+    >
     </ion-row>
   </form>
+  <ion-grid>
+
+    <ion-row>
+
+        {{ "Otra Experiencia laboral" | translate | async }}
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        No.
+      </ion-col>
+      <ion-col>
+        Empresa
+      </ion-col>
+      <ion-col>
+        Fecha
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let name of miscambios.trabajos;let indice=index">
+        <ion-col>
+          <a (click)="setPosicion(indice)"> {{ indice +1 }}</a>
+
+        </ion-col>
+        <ion-col>
+          <a (click)="setPosicion(indice)"> {{ name.empresa }}</a>
+
+        </ion-col>
+        <ion-col>
+          <a (click)="setPosicion(indice)"> {{ name.fecha_inicio }}</a>
+
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
   </ion-content>
