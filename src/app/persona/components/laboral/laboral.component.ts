@@ -4,7 +4,7 @@ import { DatosService, Candidate ,Experiencum,actualizaExperiencia} from '../dat
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/template/services/language.service';
-import { PersonaComponent } from '../../persona.component';
+
 
 
 @Component({
@@ -148,13 +148,7 @@ export class LaboralComponent implements OnInit {
 
   }
 
-  postDatosWs(micandidato: Candidate) {
-    console.log(micandidato)
-    this.datosService.postDatosUsuario(micandidato).subscribe(datos => {
-      console.log(datos)
 
-    });
-  }
 
 
 

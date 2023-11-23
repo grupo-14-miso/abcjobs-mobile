@@ -22,5 +22,6 @@ export const environment = {
   urlRegistro : 'https://34.171.225.63.nip.io/public/register',
   urlUpdateDatos : 'https://34.171.225.63.nip.io/users/personal/update',
   urlUpdateDatosLaborales : 'https://34.171.225.63.nip.io/users/experiencia/update',
+  urlUpdateDatosEstudio : 'https://34.171.225.63.nip.io/users/education/update'
 };
 

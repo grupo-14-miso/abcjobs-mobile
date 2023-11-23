@@ -26,6 +26,14 @@ export class DatosService {
     return this.http.put(environment.urlUpdateDatosLaborales, micandidato);
   }
 
+  public putDatosEstudio(micandidato: Candidate): Observable<any> {
+
+    console.log("data a actualizar por el servicio ",micandidato)
+    return this.http.put(environment.urlUpdateDatosEstudio, micandidato);
+  }
+
+
+
   public getProfiles(): Observable<Profile[]> {
     return this.http.get<Profile[]>(environment.urlPerfiles)
   }
