@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   autenticado : boolean = false;
   isToastOpen: boolean = false;
   mensajeEmergente: string = "Usuario o contraseña incorrectos";
+  tipo = "Candidate";
 
   public miformulario: FormGroup = this.fb.group({
     nombre: new FormControl<string>('',[Validators.required]),
@@ -32,6 +33,23 @@ export class LoginComponent implements OnInit {
 
   setOpen(isOpen: boolean) {
     this.isToastOpen = isOpen;
+  }
+
+  nuevo():void {
+    this.miuser.role = this.miformulario.controls['role'].value;
+    if (this.tipo === 'Candidate') {
+      this.router.navigate(['/registro']);
+      return;
+    }
+    if (this.tipo === 'Company') {
+      this.router.navigate(['/registro/empresa']);
+      return;
+    }
+    if (this.tipo === 'Admin') {
+      this.router.navigate(['/registro/admin']);
+      return;
+    }
+
   }
 
   ingresar():void {

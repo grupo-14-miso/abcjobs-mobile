@@ -15,6 +15,7 @@ import { DatosComponent } from './components/datos/datos.component';
 import { LaboralComponent } from './components/laboral/laboral.component';
 import { AcademicaComponent } from './components/academica/academica.component';
 import { TecnicaComponent } from './components/tecnica/tecnica.component';
+import { IdiomasComponent } from './components/idiomas/idiomas.component';
 
 
 
@@ -47,7 +48,8 @@ import { TecnicaComponent } from './components/tecnica/tecnica.component';
     DatosComponent,
     LaboralComponent,
     AcademicaComponent,
-    TecnicaComponent
+    TecnicaComponent,
+    IdiomasComponent
   ]
 })
 export class PersonaModule { }

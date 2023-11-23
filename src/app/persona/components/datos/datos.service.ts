@@ -26,6 +26,12 @@ export class DatosService {
     return this.http.put(environment.urlUpdateDatosLaborales, micandidato);
   }
 
+  public putIdiomas(micandidato: Candidate): Observable<any> {
+
+    console.log("data a actualizar por el servicio ",micandidato)
+    return this.http.put(environment.urlUpdateIdiomas, micandidato);
+  }
+
   public putDatosEstudio(micandidato: Candidate): Observable<any> {
 
     console.log("data a actualizar por el servicio ",micandidato)
@@ -74,7 +80,7 @@ export interface Candidate {
   fecha_nacimiento: string
   genero: string
   id_candidato: string
-  idiomas?: Idioma[]
+  idiomas: Idioma[]
   key: Key
   lenguajes_programacion?: string[]
   nacionalidad: string

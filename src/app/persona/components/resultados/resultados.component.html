@@ -1,3 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Resultados" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('es')"
+              src="../../assets/es.png"
+              class="mr-2"
+              alt="Español"
+            />
+          </ion-col>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('en')"
+              src="../../assets/en.png"
+              class="mr-2"
+              alt="English"
+            />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon
+              name="return-down-back-outline"
+              (click)="go('persona')"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
   <ion-content  class="ion-padding">
 

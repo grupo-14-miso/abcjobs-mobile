@@ -132,7 +132,18 @@ export class LaboralComponent implements OnInit {
 
   }
 
+editar(experiencia: Experiencum){
+  this.ionicForm.setValue(experiencia);
+}
 
+eliminar( ){
+  this.candidatoactual.experiencia.splice(this.posicion,1);
+
+  this.ionicForm.reset();
+  this.esnuevo = false;
+  this.setPosicion(this.candidatoactual.experiencia.length - 1)
+  this.guardar2(this.candidatoactual.experiencia[this.posicion])
+}
 
 
 

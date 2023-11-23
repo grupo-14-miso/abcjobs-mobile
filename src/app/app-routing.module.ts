@@ -14,6 +14,9 @@ import { DatosComponent } from './persona/components/datos/datos.component';
 import { TecnicaComponent } from './persona/components/tecnica/tecnica.component';
 import { LaboralComponent } from './persona/components/laboral/laboral.component';
 import { AcademicaComponent } from './persona/components/academica/academica.component';
+import { IdiomasComponent } from './persona/components/idiomas/idiomas.component';
+import { RegistroempresaComponent } from './core/components/registroempresa/registroempresa.component';
+import { RegistroadminComponent } from './core/components/registroadmin/registroadmin.component';
 
 
 const routes: Routes = [
@@ -66,12 +69,20 @@ const routes: Routes = [
     component:ListarPruebasComponent
   },
   {
-    path: 'resultados',
+    path: 'persona/resultados',
     component:ResultadosComponent
   },
   {
     path: 'registro',
     component:RegistroComponent
+  },
+  {
+    path: 'registro/empresa',
+    component:RegistroempresaComponent
+  },
+  {
+    path: 'registro/admin',
+    component:RegistroadminComponent
   },
   {
     path: 'persona/datos',
@@ -87,7 +98,7 @@ const routes: Routes = [
   },
   {
     path: 'persona/idiomas',
-    component:AcademicaComponent
+    component:IdiomasComponent
   },
 
 
