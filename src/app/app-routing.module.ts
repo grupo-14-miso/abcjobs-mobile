@@ -19,6 +19,7 @@ import { RegistroadminComponent } from './core/components/registroadmin/registro
 import { SeleccionarComponent } from './empresa/components/seleccionar/seleccionar.component';
 import { DesempenoComponent } from './empresa/components/desempeno/desempeno.component';
 import { ResultadosComponentem } from './empresa/components/resultadosem/resultadosem.component';
+import { AgendaComponent } from './empresa/components/agenda/agenda.component';
 
 
 const routes: Routes = [
@@ -102,6 +103,14 @@ const routes: Routes = [
   {
     path: 'empresa/resultados',
     component:ResultadosComponentem
+  },
+  {
+    path: 'empresa/entrevistas',
+    component:AgendaComponent
+  },
+  {
+    path: 'empresa/programar',
+    component:DesempenoComponent
   },
 
 
