@@ -5,7 +5,7 @@ import { EncabezadosComponent } from './components/encabezados/encabezados.compo
 import { DesempenoComponent } from './components/desempeno/desempeno.component';
 import { SeleccionarComponent } from './components/seleccionar/seleccionar.component';
 import { AgendaComponent } from './components/agenda/agenda.component';
-import { ResultadosComponent } from './components/resultados/resultados.component';
+import { ResultadosComponentem } from './components/resultadosem/resultadosem.component';
 import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from "../app-routing.module";
 import { FormsModule } from "@angular/forms";
@@ -21,6 +21,6 @@ import { CoreModule } from '../core/core.module';
     RouterModule,
     CoreModule
   ],
-  declarations: [EmpresaComponent, EncabezadosComponent, DesempenoComponent, SeleccionarComponent, AgendaComponent, ResultadosComponent]
+  declarations: [EmpresaComponent, EncabezadosComponent, DesempenoComponent, SeleccionarComponent, AgendaComponent, ResultadosComponentem]
 })
 export class EmpresaModule { }

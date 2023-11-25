@@ -42,14 +42,14 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list id="mimenu">
-        <ion-item (click)="ponerOpcion('seleccionar')" id="seleccionar">
+        <ion-item [routerLink]="['/empresa/seleccionar']"  id="seleccionar">
           <ion-thumbnail slot="start">
             <img alt="datos" src="./assets/application_2245126.png" />
           </ion-thumbnail>
           <ion-label>{{ 'Seleccionar Candidato' | translate | async }}s</ion-label>
         </ion-item>
 
-        <ion-item (click)="ponerOpcion('desempeno')" id="desempeno">
+        <ion-item [routerLink]="['/empresa/desempeno']"  id="desempeno">
           <ion-thumbnail slot="start">
             <img alt="experiencia" src="./assets/work-from-home.png" />
           </ion-thumbnail>
@@ -58,7 +58,7 @@
             }}</ion-label>
         </ion-item>
 
-        <ion-item (click)="ponerOpcion('resultados')" id="resultados">
+        <ion-item [routerLink]="['/empresa/resultados']"  id="resultados">
           <ion-thumbnail slot="start">
             <img alt="academica" src="./assets/education_3976625.png" />
           </ion-thumbnail>
@@ -67,12 +67,21 @@
             }}</ion-label>
         </ion-item>
 
-        <ion-item (click)="ponerOpcion('agenda')" id="agenda">
+        <ion-item [routerLink]="['/empresa/entrevistas']"  id="agenda">
           <ion-thumbnail slot="start">
             <img alt="tecnica" src="./assets/working_4727424.png" />
           </ion-thumbnail>
           <ion-label>{{
             'Entrevistas Programadas' | translate | async
+            }}</ion-label>
+        </ion-item>
+
+        <ion-item [routerLink]="['/empresa/programar']"  id="agenda">
+          <ion-thumbnail slot="start">
+            <img alt="tecnica" src="./assets/working_4727424.png" />
+          </ion-thumbnail>
+          <ion-label>{{
+            'Programar Evaluacion Desepeño' | translate | async
             }}</ion-label>
         </ion-item>
 

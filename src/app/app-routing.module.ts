@@ -11,12 +11,14 @@ import { EntrevistasComponent } from './internoabc/components/entrevistas/entrev
 import { LoginComponent } from './core/components/login/login.component';
 import { RegistroComponent } from './core/components/registro/registro.component';
 import { DatosComponent } from './persona/components/datos/datos.component';
-import { TecnicaComponent } from './persona/components/tecnica/tecnica.component';
 import { LaboralComponent } from './persona/components/laboral/laboral.component';
 import { AcademicaComponent } from './persona/components/academica/academica.component';
 import { IdiomasComponent } from './persona/components/idiomas/idiomas.component';
 import { RegistroempresaComponent } from './core/components/registroempresa/registroempresa.component';
 import { RegistroadminComponent } from './core/components/registroadmin/registroadmin.component';
+import { SeleccionarComponent } from './empresa/components/seleccionar/seleccionar.component';
+import { DesempenoComponent } from './empresa/components/desempeno/desempeno.component';
+import { ResultadosComponentem } from './empresa/components/resultadosem/resultadosem.component';
 
 
 const routes: Routes = [
@@ -99,6 +101,18 @@ const routes: Routes = [
   {
     path: 'persona/idiomas',
     component:IdiomasComponent
+  },
+  {
+    path: 'empresa/seleccionar',
+    component:SeleccionarComponent
+  },
+  {
+    path: 'empresa/desempeno',
+    component:DesempenoComponent
+  },
+  {
+    path: 'empresa/resultados',
+    component:ResultadosComponentem
   },
 
 
