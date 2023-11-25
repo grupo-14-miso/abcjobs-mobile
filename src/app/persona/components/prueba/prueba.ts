@@ -70,3 +70,75 @@ export class Respuesta {
       this.answers = answers
   }
 }
+
+
+
+export interface Entrevista {
+  candidates: string[]
+  candidates_details: CandidatesDetail[]
+  date: string
+  description: string
+  id: number
+  id_company: string
+  id_offer: string
+  link: string
+  result: string
+}
+
+export interface CandidatesDetail {
+  candidate: Candidate
+  company: Company
+  offer: Offer
+}
+
+export interface Candidate {
+  Nombre: string
+  apellido: string
+  ciudad_nacimiento: string
+  ciudad_residencia: string
+  documento: string
+  educacion: any[]
+  email: string
+  estado_civil: string
+  experiencia: any[]
+  fecha_nacimiento: string
+  genero: string
+  id_candidato: string
+  idiomas: any[]
+  lenguajes_programacion: any[]
+  nacionalidad: string
+  pais_nacimiento: string
+  pais_residencia: string
+  rol: string[]
+  segundo_apellido: string
+  segundo_nombre: string
+  soft_skill: any[]
+  soft_skills: string[]
+  tecnologias_herramientas: string[]
+  telefono: string
+  tipo_documento: string
+}
+
+export interface Company {
+  company_id: string
+  country: string
+  created_date: string
+  document_number: string
+  document_type: string
+  email: string
+  last_modified: string
+  name: string
+  phone_number: string
+}
+
+export interface Offer {
+  company_id: string
+  created_date: string
+  description: string
+  end_date: string
+  last_modified: string
+  name: string
+  offer_id: string
+  start_date: string
+}
+

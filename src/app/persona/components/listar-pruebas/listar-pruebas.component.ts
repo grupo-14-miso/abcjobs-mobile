@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {  Respuesta ,Examen} from '../prueba/prueba';
+import {  Respuesta ,Examen,Entrevista} from '../prueba/prueba';
 import { PruebasService } from './pruebas.service';
+import { LanguageService } from 'src/app/core/template/services/language.service';
+import { Router } from '@angular/router';
+import { InterviewService,Interview } from 'src/app/core/template/services/interview.service';
 
 
 @Component({
@@ -12,20 +15,51 @@ export class ListarPruebasComponent  {
   [x: string]: any;
 
   public misexamenes :  Array<Examen> = [];
+  public misentrevistas : Interview[] = [];
   examenSeleccionado = false;
   codExamen = 0;
+  targetLanguage : string = "es"
 
-  constructor(private pruebasService: PruebasService) {
+  constructor(private entrevistasService: InterviewService,private pruebasService: PruebasService,private router : Router,private languageService: LanguageService) {
     this.getPruebasWs()
+    this.getEntrevistasWs()
+  }
+
+  abreLink(mientrevista:Interview){
+    window.open(mientrevista.link, "_blank");
+  }
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
   }
 
 
+
+  ponerIdioma(idioma: string): void {
+
+    this.languageService.setLanguage(idioma);
+    this.targetLanguage = idioma;
+  }
+
+
+
+
   getPruebasWs() {
-    this.pruebasService.getPruebas(String(window.sessionStorage["key"])).subscribe(datos => {
+    let key = String(sessionStorage.getItem("llave"));
+
+    this.pruebasService.getPruebas(key).subscribe(datos => {
       this.misexamenes = datos;
-      console.log(this.misexamenes)
-      console.log("llave", window.sessionStorage["key"] )
-      console.log("token",window.sessionStorage["token"] )
+
+
+    });
+  }
+
+  getEntrevistasWs() {
+    let key = Number(sessionStorage.getItem("llave"));
+
+    this.entrevistasService.getInterviewsByCandidate(key).subscribe(datos => {
+      this.misentrevistas = datos;
+
 
     });
   }
