@@ -23,6 +23,11 @@ export class AutenticacionService {
     return this.http.post(environment.urlRegistro ,user);
   }
 
+  public registerEmpresa(user: registroempresa): Observable<any> {
+
+    return this.http.post(environment.urlRegistro ,user);
+  }
+
 
 }
 
@@ -46,5 +51,18 @@ export interface registro {
   email: string
   password: string
   role: string
-  username: string
+  Nombre: string
+  apellido: string
 }
+
+export interface registroempresa {
+  email:string,
+  password: string,
+  role:string,
+  document_type:string,
+  document_number:string,
+  name:string,
+  phone_number:string,
+  country:string
+}
+

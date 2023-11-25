@@ -9,11 +9,14 @@ import { Examen } from '../prueba/prueba';
   providedIn: 'root'
 })
 export class ResultadoService {
-  private apiUrl = environment.urlResultados;
+
+
   constructor(private http: HttpClient) { }
   public getPruebas(): Observable<Examen[]> {
-    console.log(this.apiUrl)
-    return this.http.get<Examen[]>(this.apiUrl);
+    let apiUrl = environment.urlResultadosCandidato;
+    apiUrl = apiUrl + sessionStorage.getItem("llave")+'?status=finished';
+    console.log(apiUrl);
+    return this.http.get<Examen[]>(apiUrl);
   }
 
 

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>{{ "Información Academica" | translate | async }}</ion-title>
+    <ion-title>{{ "Idiomas" | translate | async }}</ion-title>
     <div slot="secondary">
       <ion-grid class="ion-padding">
         <ion-row>
@@ -56,9 +56,9 @@
 
       <ion-input
         fill="outline"
-        formControlName="nivel_academico"
+        formControlName="idioma"
         shape="round"
-        label="{{ 'Nivel Academico' | translate | async }}:"
+        label="{{ 'Idioma' | translate | async }}:"
         type="url"
         labelPlacement="floating"
       >
@@ -68,9 +68,9 @@
     <ion-row>
       <ion-input
         fill="outline"
-        formControlName="institucion"
+        formControlName="nivel_conversacion"
         shape="round"
-        label="{{ 'institucion' | translate | async }}:"
+        label="{{ 'Nivel Conversación' | translate | async }}:"
         type="url"
         labelPlacement="floating"
       >
@@ -81,9 +81,9 @@
     <ion-row>
         <ion-input
           fill="outline"
-          formControlName="titulo_obtenido"
+          formControlName="nivel_lectura"
           shape="round"
-          label="{{ 'titulo_obtenido' | translate | async }}:"
+          label="{{ 'Nivel Lectura' | translate | async }}:"
           type="url"
           labelPlacement="floating"
         >
@@ -93,9 +93,9 @@
       <ion-col>
         <ion-input
           fill="outline"
-          formControlName="fecha_inicio"
+          formControlName="nivel_escritura"
           shape="round"
-          label="{{ 'Fecha Inicio' | translate | async }}:"
+          label="{{ 'Nivel Escritura' | translate | async }}:"
           type="url"
           labelPlacement="floating"
         >
@@ -104,9 +104,9 @@
       <ion-col>
         <ion-input
           fill="outline"
-          formControlName="fecha_fin"
+          formControlName="nativo"
           shape="round"
-          label="{{ 'Fecha Fin' | translate | async }}:"
+          label="{{ 'Nativo' | translate | async }}:"
           labelPlacement="floating"
         ></ion-input>
       </ion-col>
@@ -116,9 +116,9 @@
 
         <ion-input
           fill="outline"
-          formControlName="pais"
+          formControlName="fecha_certificacion"
           shape="round"
-          label="{{ 'Pais' | translate | async }}:"
+          label="{{ 'Fecha Certificación' | translate | async }}:"
           type="url"
           labelPlacement="floating"
         >
@@ -135,26 +135,26 @@
         type="submit"
         class="btn btn-primary ml-2"
         [disabled]="!ionicForm.valid"
-        >Guardar</ion-button
+        >{{ "Guardar" | translate | async }}</ion-button
       >
     </ion-row>
   </form>
   <ion-grid>
     <ion-row class="ion-justify-content-center" >
-      {{ "Lista estudios" | translate | async }}
+      {{ "Idiomas" | translate | async }}
     </ion-row>
 
     <ion-row>
       <ion-col> No. </ion-col>
-      <ion-col> Universidad </ion-col>
-      <ion-col> Titulo </ion-col>
+      <ion-col> {{ "Nombre" | translate | async }} </ion-col>
+      <ion-col> {{ "Conversación" | translate | async }} </ion-col>
       <ion-col></ion-col>
     </ion-row>
 
     <ion-row *ngFor="let item of estudios; let indice = index">
       <ion-col><ion-icon  (click)="editar(item)" name="create-outline" color="primary"></ion-icon> <a (click)="setPosicion(indice)"> {{ indice +1 }}</a> </ion-col>
-      <ion-col> <a (click)="setPosicion(indice)">{{ item.institucion }} </a></ion-col>
-      <ion-col> <a (click)="setPosicion(indice)">{{ item.titulo_obtenido }} </a></ion-col>
+      <ion-col> <a (click)="setPosicion(indice)">{{ item.idioma }} </a></ion-col>
+      <ion-col> <a (click)="setPosicion(indice)">{{ item.nivel_conversacion }} </a></ion-col>
       <ion-col>
 
 

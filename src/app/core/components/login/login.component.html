@@ -21,6 +21,14 @@
 </ion-header>
 <ion-content class="ion-padding">
 
+  <ion-toast
+  [isOpen]="isToastOpen"
+  message= {{mensajeEmergente}}
+  [duration]="2000"
+  (didDismiss)="setOpen(false)"
+  color = danger
+></ion-toast>
+
 
   <ion-card>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
@@ -32,13 +40,13 @@
   </ion-card>
 
 
-  <form [formGroup]="miformulario" (ngSubmit)="guardar()" novalidate>
+  <form [formGroup]="miformulario" (ngSubmit)="ingresar()" novalidate>
 
     <ion-row>
       <ion-col>
         <ion-item>
 
-          <ion-select formControlName="role" label="{{ 'Tipo de usuario' | translate | async }}" placeholder="{{ 'Seleccione' | translate | async }}">
+          <ion-select formControlName="role" label="{{ 'Tipo de usuario' | translate | async }}" [(ngModel)]="tipo" placeholder="{{ 'Seleccione' | translate | async }}">
             <ion-select-option value="Company">{{ 'Empresa' | translate | async }}</ion-select-option>
             <ion-select-option value="Candidate">{{ 'Candidato' | translate | async }}</ion-select-option>
             <ion-select-option value="Admin">{{ 'Funcionario ABC' | translate | async }}</ion-select-option>
@@ -52,7 +60,7 @@
       <ion-col>
         <ion-item>
 
-          <ion-input label="{{ 'Email' | translate | async }}" type="text" formControlName="nombre"></ion-input>
+          <ion-input label="Email" type="text" formControlName="nombre"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -73,7 +81,9 @@
       </ion-col>
     </ion-row>
   </form>
-  <a [routerLink]="['/registro']" class="small-text">Registrarse</a>
+  <a (click)="nuevo()" class="small-text">Sin usuario? Click aqui</a>
+
+  <ion-icon (click)="nuevo()" size="large" name="person-add-outline"></ion-icon>
 
 </ion-content>
 

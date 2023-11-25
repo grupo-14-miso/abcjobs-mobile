@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ResultadoService } from './resultado.service'
 import { LanguageService } from 'src/app/core/template/services/language.service';
 import { Examen } from '../prueba/prueba';
-
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +20,7 @@ export class ResultadosComponent implements OnInit {
   codExamen = 1;
   targetLanguage : string = "es"
 
-  constructor(private resultadoService : ResultadoService,private languageService: LanguageService) {
+  constructor(private resultadoService : ResultadoService,private router : Router,private languageService: LanguageService) {
     this.getPruebasWs()
   }
 
@@ -48,6 +48,14 @@ export class ResultadosComponent implements OnInit {
 
     this.languageService.setLanguage(idioma);
     this.targetLanguage = idioma;
+  }
+
+  goBack() {
+    this.router.navigate(['persona']);
+  }
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
   }
 
 

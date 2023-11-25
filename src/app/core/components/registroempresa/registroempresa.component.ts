@@ -2,27 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { LanguageService } from '../../template/services/language.service'
 import { Router } from '@angular/router';
-import { AutenticacionService , registro,credenciales} from '../../template/services/autenticacion.service'
+import { AutenticacionService , registroempresa,credenciales} from '../../template/services/autenticacion.service'
+
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-registroempresa',
+  templateUrl: './registroempresa.component.html',
+  styleUrls: ['./registroempresa.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroempresaComponent implements OnInit {
 
   targetLanguage : string = "es"
-  miuser : registro = { email: "", password: "", role: "" ,Nombre: "",apellido: ""}
+  miuser : registroempresa = { email: "", password: "", role: "" ,name: "",document_type: "",document_number: "",phone_number: "",country: ""}
 
   public miformulario: FormGroup = this.fb.group({
     email: new FormControl<string>('',[Validators.required]),
-    clave: new FormControl<string>('',[Validators.required]),
-    nombre: new FormControl<string>(''),
-    apellido: new FormControl<string>(''),
+    password: new FormControl<string>('',[Validators.required]),
+    name: new FormControl<string>(''),
+    document_type: new FormControl<string>(''),
+    document_number: new FormControl<string>(''),
+    phone_number: new FormControl<string>(''),
+    country: new FormControl<string>(''),
+
   });
 
+
+
+
+
   constructor(private fb: FormBuilder, private router : Router,private languageService: LanguageService,private authService: AutenticacionService) {
-    this.miuser.role = "Candidate";
+    this.miuser.role = "Company";
   }
 
   ngOnInit() {
@@ -38,14 +47,17 @@ export class RegistroComponent implements OnInit {
 
     this.miuser = {
       "email": this.miformulario.controls['email'].value,
-      "password": this.miformulario.controls['clave'].value,
-      "role": 'Candidate',
-      "Nombre": this.miformulario.controls['nombre'].value,
-      "apellido": this.miformulario.controls['apellido'].value,
+      "password": this.miformulario.controls['password'].value,
+      "role": 'Company',
+      "name": this.miformulario.controls['name'].value,
+      "document_type": this.miformulario.controls['document_type'].value,
+      "document_number": this.miformulario.controls['document_number'].value,
+      "phone_number": this.miformulario.controls['phone_number'].value,
+      "country": this.miformulario.controls['country'].value,
     }
 
-    this.crearCandidato(this.miuser)
-    this.router.navigate(['/persona']);
+    this.crearEmpresa(this.miuser)
+
   }
 
   ponerIdioma(idioma: string): void {
@@ -54,8 +66,8 @@ export class RegistroComponent implements OnInit {
   }
 
 
-  crearCandidato(usr: registro) {
-    let retorno = this.authService.registerCandidato(usr).subscribe(datos => {
+  crearEmpresa(usr: registroempresa) {
+    let retorno = this.authService.registerEmpresa(usr).subscribe(datos => {
       console.log("correcto",datos)
       let ingrese: credenciales = { email: usr.email, password: usr.password, role: usr.role } ;
       this.autenticar(ingrese);
@@ -63,7 +75,7 @@ export class RegistroComponent implements OnInit {
         console.log("mal", err)
       }
     );
-    console.log("retorno crearCandidato",retorno)
+    console.log("retorno crearEmpresa",retorno)
   }
 
 
@@ -73,7 +85,7 @@ export class RegistroComponent implements OnInit {
       localStorage.setItem('token', datos.token);
       window.sessionStorage["llave"] = datos.key;
       window.sessionStorage["token"] = datos.token;
-      this.router.navigate(['/persona']);
+      this.router.navigate(['/empresa']);
     }, err => {
       console.log("mal", err)
     }

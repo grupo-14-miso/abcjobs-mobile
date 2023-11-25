@@ -9,11 +9,13 @@ import { LanguageService } from './template/services/language.service';
 import { LoginComponent } from './components/login/login.component';
 import { IonicModule } from '@ionic/angular';
 import { RegistroComponent } from './components/registro/registro.component';
+import { RegistroempresaComponent } from './components/registroempresa/registroempresa.component';
+import { RegistroadminComponent } from './components/registroadmin/registroadmin.component';
 
 
 
 @NgModule({
-  declarations: [ HeaderComponent, TranslatePipe,LoginComponent, RegistroComponent],
+  declarations: [ HeaderComponent, TranslatePipe,LoginComponent, RegistroComponent, RegistroempresaComponent, RegistroadminComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -1,17 +1,16 @@
-import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
-import { DatosService, Candidate ,Educacion} from '../datos/datos.service';
+import { Component, OnInit } from '@angular/core';
+import { DatosService, Candidate ,Idioma} from '../datos/datos.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/template/services/language.service';
 
 
-
 @Component({
-  selector: 'app-academica',
-  templateUrl: './academica.component.html',
-  styleUrls: ['./academica.component.css']
+  selector: 'app-idiomas',
+  templateUrl: './idiomas.component.html',
+  styleUrls: ['./idiomas.component.css']
 })
-export class AcademicaComponent implements OnInit {
+export class IdiomasComponent implements OnInit {
 
   llavecandidato!: string;
   candidatoactual!: Candidate;
@@ -19,16 +18,16 @@ export class AcademicaComponent implements OnInit {
   posicion = 0;
   esnuevo = false;
   isToastOpen = false;
-  estudios: Educacion[] = [];
+  estudios!: Idioma[];
 
 
   public ionicForm: FormGroup = this.fb.group({
-    nivel_academico: new FormControl('', [Validators.required]),
-    institucion: new FormControl('', [Validators.required]),
-    titulo_obtenido: new FormControl('', [Validators.required]),
-    fecha_fin: new FormControl<string>(''),
-    fecha_inicio: new FormControl<string>(''),
-    pais: new FormControl<string>(''),
+    idioma: new FormControl('', [Validators.required]),
+    nivel_conversacion: new FormControl('', [Validators.required]),
+    nivel_lectura: new FormControl('', [Validators.required]),
+    nivel_escritura: new FormControl<string>(''),
+    nativo: new FormControl<string>(''),
+    fecha_certificacion: new FormControl<string>(''),
 
   });
 
@@ -52,7 +51,7 @@ export class AcademicaComponent implements OnInit {
     this.setPosicion(this.estudios.length - 1)
   }
 
-  editar( experiencia: Educacion){
+  editar( experiencia: Idioma){
     this.ionicForm.setValue(experiencia);
   }
 
@@ -75,7 +74,7 @@ export class AcademicaComponent implements OnInit {
 
     this.datosService.getDatos(this.llavecandidato).subscribe(datos => {
       this.candidatoactual = datos;
-      this.estudios = this.candidatoactual.educacion;
+      this.estudios = this.candidatoactual.idiomas;
       console.log(datos);
       if (this.estudios.length > 0) {
         this.ionicForm.setValue(this.estudios[this.posicion] )
@@ -87,9 +86,6 @@ export class AcademicaComponent implements OnInit {
     });
 
   }
-
-
-
 
 
   ponerIdioma(idioma: string): void {
@@ -104,7 +100,7 @@ export class AcademicaComponent implements OnInit {
   }
 
 
-  guardar(experiencia: Educacion){
+  guardar(experiencia: Idioma){
     if (this.esnuevo){
       this.estudios.push(experiencia);
     }
@@ -112,7 +108,7 @@ export class AcademicaComponent implements OnInit {
       this.estudios[this.posicion] = experiencia;
     }
 
-    this.candidatoactual.educacion = this.estudios;
+    this.candidatoactual.idiomas = this.estudios;
     console.info("estudios guardada: ", this.candidatoactual.educacion)
     this.setOpen(true)
     this.actualizarEstudio();
@@ -128,9 +124,9 @@ export class AcademicaComponent implements OnInit {
 
 
   actualizarEstudio() {
-    this.datosService.putDatosEstudio(this.candidatoactual).subscribe(datos => {
+    this.datosService.putIdiomas(this.candidatoactual).subscribe(datos => {
       this.esnuevo = false;
-      console.log("retorno del putDatosEstudio",datos)
+      console.log("retorno del putIdiomas",datos)
     });
 
 

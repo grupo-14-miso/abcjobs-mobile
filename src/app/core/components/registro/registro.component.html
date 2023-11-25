@@ -2,28 +2,28 @@
   <ion-toolbar>
     <ion-title>ABC jobs</ion-title>
 
-    <div  slot="secondary">
+    <div slot="secondary">
       <ion-grid class="ion-padding">
         <ion-row>
           <ion-col>
-              <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español"/>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
           </ion-col>
           <ion-col>
-              <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English"/>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
           </ion-col>
         </ion-row>
       </ion-grid>
-   </div>
+    </div>
 
 
 
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content>
 
 
   <ion-card>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+
     <ion-card-header>
       <ion-card-title>{{ 'Bienvenido a ABC JOBS' | translate | async }}</ion-card-title>
       <ion-card-subtitle>{{ 'Creación de Usuario' | translate | async }}</ion-card-subtitle>
@@ -33,45 +33,42 @@
 
 
   <form [formGroup]="miformulario" (ngSubmit)="guardar()" novalidate>
+    <ion-grid>
+      <ion-row>
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Nombre' | translate | async }}"
+          type="text" formControlName="nombre"></ion-input>
 
-    <ion-row>
-      <ion-col>
-        <ion-item>
+      </ion-row>
+      <ion-row>
 
-          <ion-select formControlName="role" label="{{ 'Tipo de usuario' | translate | async }}" placeholder="{{ 'Seleccione' | translate | async }}">
-            <ion-select-option value="Company">{{ 'Empresa' | translate | async }}</ion-select-option>
-            <ion-select-option value="Candidate">{{ 'Candidato' | translate | async }}</ion-select-option>
-            <ion-select-option value="Admin">{{ 'Funcionario ABC' | translate | async }}</ion-select-option>
-          </ion-select>
 
-        </ion-item>
-      </ion-col>
-    </ion-row>
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Apellido' | translate | async }}"
+          type="text" formControlName="apellido"></ion-input>
 
-    <ion-row>
-      <ion-col>
-        <ion-item>
 
-          <ion-input label="{{ 'Email' | translate | async }}" type="text" formControlName="email"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
 
-          <ion-input label="{{ 'Contraseña' | translate | async }}" type="password" formControlName="clave"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+      </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="primary" expand="block"
-          >{{ 'LogIn' | translate | async }}</ion-button
-        >
-      </ion-col>
-    </ion-row>
+
+      <ion-row>
+
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Email' | translate | async }}"
+          type="text" formControlName="email"></ion-input>
+
+      </ion-row>
+      <ion-row>
+
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Contraseña' | translate | async }}"
+          type="password" formControlName="clave"></ion-input>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block">{{ 'LogIn' | translate | async }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
   <a [routerLink]="['/login']" class="small-text">Ya tiene usuario? Inicie sesion aqui</a>
 

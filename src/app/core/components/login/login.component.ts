@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   targetLanguage : string = "es"
   miuser : credenciales = { email: "", password: "", role: "" }
   autenticado : boolean = false;
+  isToastOpen: boolean = false;
+  mensajeEmergente: string = "Usuario o contraseña incorrectos";
+  tipo = "Candidate";
 
   public miformulario: FormGroup = this.fb.group({
     nombre: new FormControl<string>('',[Validators.required]),
@@ -28,7 +31,28 @@ export class LoginComponent implements OnInit {
 
   }
 
-  guardar() {
+  setOpen(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
+
+  nuevo():void {
+    this.miuser.role = this.miformulario.controls['role'].value;
+    if (this.tipo === 'Candidate') {
+      this.router.navigate(['/registro']);
+      return;
+    }
+    if (this.tipo === 'Company') {
+      this.router.navigate(['/registro/empresa']);
+      return;
+    }
+    if (this.tipo === 'Admin') {
+      this.router.navigate(['/registro/admin']);
+      return;
+    }
+
+  }
+
+  ingresar():void {
 
 
      if (this.miformulario.invalid) {
@@ -77,10 +101,12 @@ export class LoginComponent implements OnInit {
     let retorno = this.authService.logonCandidato(usr).subscribe(datos => {
       console.log("correcto",datos)
       this.autenticado = true;
+      localStorage.setItem('token', datos.token);
+      window.sessionStorage["llave"] = datos.key;
+      window.sessionStorage["token"] = datos.token;
       if (this.miformulario.controls['role'].value === 'Candidate') {
 
-        window.sessionStorage["llave"] = datos.key;
-        window.sessionStorage["token"] = datos.token;
+
         console.log("llave", window.sessionStorage["key"] )
         console.log("token",window.sessionStorage["token"] )
         this.router.navigate(['/persona']);
@@ -100,6 +126,8 @@ export class LoginComponent implements OnInit {
     }, err => {
       console.log("mal", err)
       this.autenticado = false;
+      this.mensajeEmergente = "Usuario o contraseña incorrectos";
+      this.setOpen(true);
     }
     );
 
