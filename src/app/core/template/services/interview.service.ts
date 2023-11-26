@@ -51,8 +51,19 @@ export class InterviewService {
     )
   }
 
+
+  postInterviewsResult(interview_id: number, resultado: Result)  {
+    return this.http.post(environment.urlEntrevistas+"/"+interview_id,resultado).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
 }
 
+
+export interface Result {
+  result: string
+}
 
 export interface SelectCandidate {
  key: Key,
