@@ -19,8 +19,10 @@ export class ListarPruebasComponent  {
   examenSeleccionado = false;
   codExamen = 0;
   targetLanguage : string = "es"
+  nombrePersona : string = "Juan"
 
   constructor(private entrevistasService: InterviewService,private pruebasService: PruebasService,private router : Router,private languageService: LanguageService) {
+    this.nombrePersona = String( sessionStorage.getItem("name"));
     this.getPruebasWs()
     this.getEntrevistasWs()
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../core/template/services/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-internoabc',
@@ -10,9 +11,13 @@ export class InternoabcComponent implements OnInit {
   targetLanguage : string = "es"
   opcionActual : string = "inicio"
 
-  constructor(private languageService: LanguageService) { }
+  constructor(private languageService: LanguageService,private router : Router) { }
 
   ngOnInit() {
+  }
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
   }
 
 

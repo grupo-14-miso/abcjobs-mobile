@@ -21,6 +21,8 @@ import { DesempenoComponent } from './empresa/components/desempeno/desempeno.com
 import { ResultadosComponentem } from './empresa/components/resultadosem/resultadosem.component';
 import { AgendaComponent } from './empresa/components/agenda/agenda.component';
 import { ResolverpruebaComponent } from './empresa/components/resolverprueba/resolverprueba.component';
+import { ResultadoglobalComponent } from './internoabc/components/resultadoglobal/resultadoglobal.component';
+import { ConsultaglobalComponent } from './internoabc/components/consultaglobal/consultaglobal.component';
 
 
 const routes: Routes = [
@@ -129,11 +131,15 @@ const routes: Routes = [
   },
   {
     path: 'internoabc/resultados',
-    component:ResultadosComponent
+    component:ResultadoglobalComponent
   },
   {
     path: 'internoabc/entrevistas',
     component:EntrevistasComponent
+  },
+  {
+    path: 'internoabc/consulta',
+    component:ConsultaglobalComponent
   },
 
 

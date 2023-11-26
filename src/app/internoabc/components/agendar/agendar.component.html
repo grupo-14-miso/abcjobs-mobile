@@ -1,83 +1,95 @@
+<ion-header>
 
-<div class="ion-page" id="main-content">
+  <ion-toolbar color="primary">
+    <ion-title>Entrevistas</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
+          </ion-col>
+          <ion-col>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon size="large" name="return-down-back-outline" (click)="go('internoabc')  "></ion-icon>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
 
   <ion-content class="ion-padding">
 
 
 
     <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
       <ion-row class="ion-padding-bottom">
-        <ion-select
-        fill="outline"
-          (ionChange)=seleccionaEmpresa()
-          formControlName="empresa"
-          shape="round"
-          label="{{ 'Empresa' | translate | async }}"
-          >
-          <ion-select-option  *ngFor="let c of listaEmpresas ; let i =index" value="{{c.company_id}}">{{c.name}}</ion-select-option>
+        <ion-select fill="outline" (ionChange)=seleccionaEmpresa() formControlName="empresa" shape="round"
+          label="{{ 'Empresa' | translate | async }}">
+          <ion-select-option *ngFor="let c of listaEmpresas ; let i =index"
+            value="{{c.company_id}}">{{c.name}}</ion-select-option>
         </ion-select>
       </ion-row>
 
       <ion-row class="ion-padding-bottom">
-        <ion-select fill="outline"
-          formControlName="oferta"
-          (ionChange)=seleccionaOferta()
-          shape="round"
-          label="{{ 'Oferta' | translate | async }}:"
-          labelPlacement="floating">
-          <ion-select-option  *ngFor="let c of listaOfertas ; let i =index" value="{{c.offer_id}}">{{ c.name | translate | async }} </ion-select-option>
+        <ion-select fill="outline" formControlName="oferta" (ionChange)=seleccionaOferta() shape="round"
+          label="{{ 'Oferta' | translate | async }}:" labelPlacement="floating">
+          <ion-select-option *ngFor="let c of listaOfertas ; let i =index" value="{{c.offer_id}}">{{ c.name | translate
+            | async }} </ion-select-option>
         </ion-select>
       </ion-row>
 
       <ion-row class="ion-padding-bottom">
-        <ion-select fill="outline"
-          formControlName="candidato"
-          (ionChange)=seleccionaCandidato()
-          shape="round"
-          label="{{ 'Candidato' | translate | async }}:"
-          labelPlacement="floating">
-          <ion-select-option  *ngFor="let c of listaPreentrevistas ; let i =index" value="{{c.pre_interview.id_candidate}}">{{c.candidate.Nombre}} {{c.candidate.apellido}}</ion-select-option>
+        <ion-select fill="outline" formControlName="candidato" (ionChange)=seleccionaCandidato() shape="round"
+          label="{{ 'Candidato' | translate | async }}:" labelPlacement="floating">
+          <ion-select-option *ngFor="let c of listaPreentrevistas ; let i =index"
+            value="{{c.pre_interview.id_candidate}}">{{c.candidate.Nombre}} {{c.candidate.apellido}}</ion-select-option>
         </ion-select>
       </ion-row>
 
       <ion-row class="ion-padding-bottom">
-        <ion-input fill="outline"
-          formControlName="link"
-          shape="round"
-          label="{{ 'Link Reunión' | translate | async }}:"
-          type="url"
-          labelPlacement="floating">
+        <ion-input fill="outline" formControlName="link" shape="round" label="{{ 'Link Reunión' | translate | async }}:"
+          type="url" labelPlacement="floating">
         </ion-input>
       </ion-row>
 
       <ion-row class="ion-padding-bottom">
-        <ion-input fill="outline"
-        formControlName="descripcion"
-        shape="round"
-        label="{{ 'Descripción' | translate | async }}:"
-        labelPlacement="floating"></ion-input>
+        <ion-input fill="outline" formControlName="descripcion" shape="round"
+          label="{{ 'Descripción' | translate | async }}:" labelPlacement="floating"></ion-input>
       </ion-row>
 
       <ion-row class="ion-justify-content-center ion-padding-bottom">
         <ion-col size="8">
-            <ion-input shape="round" fill="outline" formControlName="mifecha" type="date" ng-model="fechaAgendado"></ion-input>
+          <ion-input shape="round" fill="outline" formControlName="mifecha" type="date"
+            ng-model="fechaAgendado"></ion-input>
         </ion-col>
         <ion-col size="6">
-          <ion-input shape="round" fill="outline" formControlName="mihora" type="time" ></ion-input>
+          <ion-input shape="round" fill="outline" formControlName="mihora" type="time"></ion-input>
         </ion-col>
 
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="primary" expand="block"
-            >Submit</ion-button
-          >
+          <ion-button type="submit" color="primary" expand="block">Submit</ion-button>
         </ion-col>
       </ion-row>
     </form>
 
 
   </ion-content>
-</div>
-
-
