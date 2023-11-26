@@ -132,8 +132,6 @@ export class DesempenoComponent implements OnInit {
     this.targetLanguage = idioma;
   }
 
-  guardar2(datos: Company): void {
-    console.log("va a guardar esto",datos);
-  }
+
 
 }
