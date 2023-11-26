@@ -22,14 +22,32 @@ export class CompaniesService {
     )
   }
 
-  getCandidatosListos(company_id: string): Observable<candidatoListo[]> {
-    return this.http.get<candidatoListo[]>(environment.urlCandidatosListos+company_id).pipe(
+  getCandidatosListos(oferta: number): Observable<candidatoListo[]> {
+    return this.http.get<candidatoListo[]>(environment.urlCandidatosListos+oferta).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+
+  saveMemberTeam(memberTeam: MemberTeam) {
+    return this.http.post<Notification>(environment.urlCompanias+"/equipo", memberTeam).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
 
 
 
+
+}
+
+
+export interface MemberTeam  {
+
+    offer_id: string,
+    candidate_id: string,
+    tipo: string,
+    rol: string,
+    nombre: string,
 
 }
 

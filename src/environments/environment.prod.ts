@@ -27,6 +27,7 @@ export const environment = {
   urlResultadosCandidato : 'https://34.171.225.63.nip.io/assignments/candidate/',
   urlEmpresaOfertas: 'https://34.171.225.63.nip.io/companies/offer/',
   urlCandidatosListos : 'https://34.171.225.63.nip.io/users/ready/',
-  urlentrevistas : 'https://34.171.225.63.nip.io/interviews'
+  urlentrevistas : 'https://34.171.225.63.nip.io/interviews',
+  urlCompanias : 'https://34.171.225.63.nip.io/companies'
 };
 
