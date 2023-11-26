@@ -11,6 +11,8 @@ import { AppRoutingModule } from "../app-routing.module";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { CoreModule } from '../core/core.module';
+import { ResolverpruebaComponent } from './components/resolverprueba/resolverprueba.component';
+import { PersonaModule } from '../persona/persona.module';
 
 @NgModule({
   imports: [
@@ -19,8 +21,18 @@ import { CoreModule } from '../core/core.module';
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    CoreModule
+    CoreModule,
+    PersonaModule
   ],
-  declarations: [EmpresaComponent, EncabezadosComponent, DesempenoComponent, SeleccionarComponent, AgendaComponent, ResultadosComponentem]
+
+  declarations: [EmpresaComponent,
+    EncabezadosComponent,
+    DesempenoComponent,
+    SeleccionarComponent,
+    AgendaComponent,
+    ResultadosComponentem,
+    ResolverpruebaComponent,
+
+  ]
 })
 export class EmpresaModule { }

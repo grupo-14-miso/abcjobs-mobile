@@ -14,6 +14,8 @@ export class Examen {
   type: string
   result: string
   status: string
+  nombre: string
+  apellido: string
   public constructor(assignment_id: number,
     focus: string,
     questions: Question[],
@@ -28,6 +30,8 @@ export class Examen {
     this.questions = questions;
     this.result = result;
     this.status = status;
+    this.nombre = "";
+    this.apellido = "";
   }
 
 }

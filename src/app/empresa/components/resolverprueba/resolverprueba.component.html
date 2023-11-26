@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Evaluar Desempeño" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
+          </ion-col>
+          <ion-col>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon name="return-down-back-outline" size="large" (click)="go('empresa')"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="container-fluid" *ngIf="examenSeleccionado===false">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'Evaluaciones de Desempeño' | translate | async }}</ion-card-title>
+        <ion-card-subtitle>{{ 'Procesos Pendientes' | translate | async }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+
+
+      <ion-card  *ngFor="let c of misexamenes; let i =index">
+        <div class="container-fluid" *ngIf="c.questions.length>0">
+          <ion-card-header (click)="seleccionaExamen(i)"  color="secondary">
+            <ion-card-title><ion-icon name="create"></ion-icon>{{ 'Examen: ' | translate | async }}
+              {{c.focus}}</ion-card-title>
+              <ion-card-subtitle>{{ 'Funcionario:' | translate | async }} {{c.nombre + " "+ c.apellido}}</ion-card-subtitle>
+              <ion-card-content color="secondary"> {{ 'PENDIENTE POR REALIZAR' | translate | async }}  </ion-card-content>
+          </ion-card-header>
+
+        </div>
+
+        <div class="container-fluid" *ngIf="c.questions.length<=0">
+          <ion-card-header  color="success">
+            <ion-card-title><ion-icon name="create"></ion-icon>{{ 'Examen: ' | translate | async }}
+              {{c.focus}}</ion-card-title>
+            <ion-card-subtitle>{{ 'Funcionario:' | translate | async }} {{c.nombre + " "+ c.apellido}}</ion-card-subtitle>
+
+          <ion-card-content color="success"> {{ 'Resultado:' | translate | async }} {{c.result}} </ion-card-content>
+        </ion-card-header>
+        </div>
+      </ion-card>
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="container-fluid" *ngIf="examenSeleccionado===true">
+    <app-examen [miexamen]="misexamenes[codExamen]" (finalizarExamen)="examenFinalizado($event)"></app-examen>
+
+  </div>
+
+
+
+
+</ion-content>
