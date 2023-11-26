@@ -20,6 +20,7 @@ import { SeleccionarComponent } from './empresa/components/seleccionar/seleccion
 import { DesempenoComponent } from './empresa/components/desempeno/desempeno.component';
 import { ResultadosComponentem } from './empresa/components/resultadosem/resultadosem.component';
 import { AgendaComponent } from './empresa/components/agenda/agenda.component';
+import { ResolverpruebaComponent } from './empresa/components/resolverprueba/resolverprueba.component';
 
 
 const routes: Routes = [
@@ -98,7 +99,7 @@ const routes: Routes = [
   },
   {
     path: 'empresa/desempeno',
-    component:DesempenoComponent
+    component:ResolverpruebaComponent
   },
   {
     path: 'empresa/resultados',

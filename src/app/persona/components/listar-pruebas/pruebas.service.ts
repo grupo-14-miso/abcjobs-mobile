@@ -22,6 +22,18 @@ export class PruebasService {
     return this.http.get<Examen[]>(this.apiUrlpruebas+"candidate/"+candidato+"?status=in_progress&status=to_do&inclusive=true");
   }
 
+  public getPruebasDesempenoCandidato(candidato:string): Observable<Examen[]> {
+    console.log("lamando el servicio getPruebas",this.apiUrlpruebas+"candidate/"+candidato+"?status=in_progress&status=to_do&inclusive=true")
+    return this.http.get<Examen[]>(this.apiUrlpruebas+"candidate/"+candidato+"?status=in_progress&status=to_do&inclusive=true");
+  }
+
+  public getPruebasDesempenoEmpresa(empresa:string): Observable<Examen[]> {
+    console.log("lamando el servicio getPruebas",this.apiUrlpruebas+"company/"+empresa)
+    return this.http.get<Examen[]>(this.apiUrlpruebas+"company/"+empresa);
+  }
+
+
+
   public getPruebasxTipo(tipo:string): Observable<Examen[]> {
     console.log("lamando el servicio getPruebasxTipo",this.apiUrlpruebas+"assignments?type="+tipo)
     return this.http.get<Examen[]>(environment.baseUrl+"?type="+tipo);
@@ -29,7 +41,7 @@ export class PruebasService {
 
 
   public postAsignarPruebaaCandidato(examen:number,candidato:number) {
-    console.log("lamando el servicio postAsignarPruebaaCandidato",this.apiUrlpruebas+"/candidate"+examen+"/"+candidato)
+    console.log("lamando el servicio postAsignarPruebaaCandidato",this.apiUrlpruebas+"candidate/"+examen+"/"+candidato)
     return this.http.post(this.apiUrlpruebas+"candidate/"+examen+"/"+candidato,{});
   }
 
