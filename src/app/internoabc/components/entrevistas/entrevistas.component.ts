@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Entrevista } from '../../model/preentrevista';
 import { PreentrevistaService } from '../../model/preentrevista.service';
+import { LanguageService } from '../../../core/template/services/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entrevistas',
@@ -10,12 +12,18 @@ import { PreentrevistaService } from '../../model/preentrevista.service';
 export class EntrevistasComponent implements OnInit {
   public misEntrevistas :  Array<Entrevista> = [];
   public ofertaEmpresa : number = 5683780991844352;
-  constructor(private resultado : PreentrevistaService) {
+  targetLanguage : string = "es"
+  constructor(private languageService: LanguageService, private router : Router,private resultado : PreentrevistaService) {
     this.getEntrevistas()
   }
 
   ngOnInit(): void {
   }
+
+  abreLink(mientrevista:string){
+    window.open(mientrevista, "_blank");
+  }
+
 
   getEntrevistas() {
     this.resultado.getEntrevistas().subscribe(datos => {
@@ -23,6 +31,18 @@ export class EntrevistasComponent implements OnInit {
       console.log(this.misEntrevistas)
 
     });
+  }
+
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
+  }
+
+
+  ponerIdioma(idioma: string): void {
+
+    this.languageService.setLanguage(idioma);
+    this.targetLanguage = idioma;
   }
 
 }

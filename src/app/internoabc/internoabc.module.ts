@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EntrevistasComponent } from './components/entrevistas/entrevistas.component';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from '../core/core.module';
+import { ResultadoglobalComponent } from './components/resultadoglobal/resultadoglobal.component';
+import { ConsultaglobalComponent } from './components/consultaglobal/consultaglobal.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,6 @@ import { CoreModule } from '../core/core.module';
   exports: [
     InternoabcComponent,EncabezadosComponent, ProgramarComponent,AgendarComponent, EntrevistasComponent
   ],
-  declarations: [InternoabcComponent,EncabezadosComponent, ProgramarComponent,AgendarComponent, EntrevistasComponent]
+  declarations: [InternoabcComponent,EncabezadosComponent, ProgramarComponent,AgendarComponent, EntrevistasComponent, ResultadoglobalComponent, ConsultaglobalComponent]
 })
 export class InternoabcModule { }

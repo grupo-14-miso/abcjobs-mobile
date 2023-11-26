@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { Company, Oferta, PreEntrevista ,Candidate,Entrevista} from '../../model/preentrevista';
 import { PreentrevistaService } from '../../model/preentrevista.service';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../../core/template/services/language.service';
 
 @Component({
   selector: 'app-agendar',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./agendar.component.css']
 })
 export class AgendarComponent implements OnInit {
+  targetLanguage : string = "es"
   public listaEmpresas :  Array<Company> = [];
   public listaPreentrevistas :  Array<PreEntrevista> = [];
   public listaOfertas :  Array<Oferta> = [];
@@ -75,7 +77,7 @@ export class AgendarComponent implements OnInit {
 
 
 
-  constructor(public formBuilder: FormBuilder,private resultado : PreentrevistaService, private router : Router) {
+  constructor(private languageService: LanguageService,public formBuilder: FormBuilder,private resultado : PreentrevistaService, private router : Router) {
     this.getEmpresas()
 
 
@@ -96,7 +98,7 @@ export class AgendarComponent implements OnInit {
       this.entrevista.link = this.ionicForm.get('link')?.value?.toString() ?? '';
 
       this.resultado.crearEntrevista(this.entrevista).subscribe(datos => {
-        console.log( "GUardado"+datos);
+        console.log( "GUardado",datos);
         this.ionicForm.reset();
         this.router.navigate(['internoabc/entrevistas']);
 
@@ -115,7 +117,7 @@ export class AgendarComponent implements OnInit {
   getEmpresas() {
     this.resultado.getEmpresas().subscribe(datos => {
       this.listaEmpresas = datos;
-
+      console.log("empresas ",this.listaEmpresas)
     });
   }
 
@@ -144,5 +146,18 @@ export class AgendarComponent implements OnInit {
   cambiaEmpresa(datos: any) {
     console.log(datos)
   }
+
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
+  }
+
+
+  ponerIdioma(idioma: string): void {
+
+    this.languageService.setLanguage(idioma);
+    this.targetLanguage = idioma;
+  }
+
 
 }

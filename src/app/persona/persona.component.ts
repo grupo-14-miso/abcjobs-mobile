@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 export class PersonaComponent implements OnInit {
   targetLanguage : string = "es"
   opcionActual : string = "inicio"
-  constructor(private languageService: LanguageService,private router : Router) { }
+  nombrePersona : string = "Juan"
+  constructor(private languageService: LanguageService,private router : Router) {
+    this.nombrePersona = String( sessionStorage.getItem("name"));
+  }
 
   ngOnInit() {
 

@@ -35,12 +35,12 @@
       <ion-row>
         <ion-col>
           <ion-input fill="outline" formControlName="Nombre" shape="round"
-            label="{{ 'Primer Nombre' | translate | async }}:" type="url" labelPlacement="floating">
+            label="{{ 'Primer Nombre' | translate | async }}:" type="text" labelPlacement="floating">
           </ion-input>
         </ion-col>
         <ion-col>
           <ion-input fill="outline" formControlName="segundo_nombre" shape="round"
-            label="{{ 'Segundo Nombre' | translate | async }}:" type="url" labelPlacement="floating">
+            label="{{ 'Segundo Nombre' | translate | async }}:" type="text" labelPlacement="floating">
           </ion-input>
         </ion-col>
       </ion-row>
@@ -48,13 +48,13 @@
       <ion-row>
         <ion-col>
           <ion-input fill="outline" formControlName="apellido" shape="round"
-            label="{{ 'Primer Apellido' | translate | async }}:" type="url" ng-model="candidatoactual.apellido"
+            label="{{ 'Primer Apellido' | translate | async }}:" type="text" ng-model="candidatoactual.apellido"
             labelPlacement="floating">
           </ion-input>
         </ion-col>
         <ion-col>
           <ion-input fill="outline" formControlName="segundo_apellido" shape="round"
-            label="{{ 'Segundo Apellido' | translate | async }}:" type="url" ng-model="candidatoactual.apellido"
+            label="{{ 'Segundo Apellido' | translate | async }}:" type="text" ng-model="candidatoactual.apellido"
             labelPlacement="floating">
           </ion-input>
         </ion-col>
@@ -67,7 +67,7 @@
         </ion-col>
         <ion-col>
           <ion-input fill="outline" formControlName="documento" shape="round"
-            label="{{ 'No Documento' | translate | async }}:" type="url" labelPlacement="floating">
+            label="{{ 'No Documento' | translate | async }}:" type="text" labelPlacement="floating">
           </ion-input>
         </ion-col>
       </ion-row>
@@ -87,7 +87,7 @@
       <ion-row>
         <ion-col>
           <ion-input fill="outline" formControlName="estado_civil" shape="round"
-            label="{{ 'Estado Civil' | translate | async }}:" type="url" labelPlacement="floating">
+            label="{{ 'Estado Civil' | translate | async }}:" type="text" labelPlacement="floating">
           </ion-input>
         </ion-col>
         <ion-col>
@@ -99,7 +99,7 @@
       <ion-row>
         <ion-col>
           <ion-input fill="outline" formControlName="pais_nacimiento" shape="round"
-            label="{{ 'Pais Nacimiento' | translate | async }}:" type="url" labelPlacement="floating">
+            label="{{ 'Pais Nacimiento' | translate | async }}:" type="text" labelPlacement="floating">
           </ion-input>
         </ion-col>
         <ion-col>
@@ -111,7 +111,7 @@
       <ion-row>
         <ion-col>
           <ion-input fill="outline" formControlName="telefono" shape="round"
-            label="{{ 'Telefono' | translate | async }}:" type="url" labelPlacement="floating">
+            label="{{ 'Teléfono' | translate | async }}:" type="text" labelPlacement="floating">
           </ion-input>
         </ion-col>
         <ion-col>
@@ -141,7 +141,7 @@
         <ion-list>
           <ion-item>
             <ion-select shape="round" justify="start" fill="outline" id="language" formControlName="lenguajes_programacion" aria-label="Lenguajes de Programacion"
-              placeholder="Lenguajes de programacion" [multiple]="true">
+              placeholder="Lenguajes de programación" [multiple]="true">
               <ion-select-option *ngFor="let name of languages" [value]="name"> {{ name }}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -152,7 +152,7 @@
         <ion-list>
           <ion-item>
             <ion-select shape="round" justify="start" fill="outline" id="tecnologias" formControlName="tecnologias_herramientas" aria-label="tecnologias_herramientas"
-              placeholder="tecnologias" [multiple]="true">
+              placeholder="Tecnologias" [multiple]="true">
               <ion-select-option *ngFor="let name of tools" [value]="name"> {{ name }}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -163,7 +163,7 @@
         <ion-list>
           <ion-item>
             <ion-select shape="round" justify="start" fill="outline" id="soft_skill" formControlName="soft_skill" aria-label="soft_skill"
-              placeholder="tecnologias" [multiple]="true">
+              placeholder="Habilidades" [multiple]="true">
               <ion-select-option *ngFor="let name of skills" [value]="name"> {{ name }}</ion-select-option>
             </ion-select>
           </ion-item>

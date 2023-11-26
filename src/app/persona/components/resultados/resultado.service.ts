@@ -19,5 +19,12 @@ export class ResultadoService {
     return this.http.get<Examen[]>(apiUrl);
   }
 
+  public getTodaslasPruebas(): Observable<Examen[]> {
+    let apiUrl = environment.urlResultadosCandidato;
+    apiUrl = apiUrl + "0"+'?status=finished';
+    console.log(apiUrl);
+    return this.http.get<Examen[]>(apiUrl);
+  }
+
 
 }
