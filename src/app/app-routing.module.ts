@@ -19,6 +19,7 @@ import { RegistroadminComponent } from './core/components/registroadmin/registro
 import { SeleccionarComponent } from './empresa/components/seleccionar/seleccionar.component';
 import { DesempenoComponent } from './empresa/components/desempeno/desempeno.component';
 import { ResultadosComponentem } from './empresa/components/resultadosem/resultadosem.component';
+import { AgendaComponent } from './empresa/components/agenda/agenda.component';
 
 
 const routes: Routes = [
@@ -32,19 +33,87 @@ const routes: Routes = [
     component:ListarPruebasComponent
 
   },
+
+
   {
     path: 'login',
     component:LoginComponent
 
   },
   {
+    path: 'registro',
+    component:RegistroComponent
+  },
+  {
+    path: 'registro/empresa',
+    component:RegistroempresaComponent
+  },
+  {
+    path: 'registro/admin',
+    component:RegistroadminComponent
+  },
+
+
+  {
     path: 'persona',
     component:PersonaComponent
   },
   {
+    path: 'persona/datos',
+    component:DatosComponent
+  },
+  {
+    path: 'persona/laboral',
+    component:LaboralComponent
+  },
+  {
+    path: 'persona/academica',
+    component:AcademicaComponent
+  },
+  {
+    path: 'persona/idiomas',
+    component:IdiomasComponent
+  },
+  {
+    path: 'persona/resultados',
+    component:ResultadosComponent
+  },
+  {
+    path: 'persona/procesos',
+    component:ListarPruebasComponent
+  },
+    {
+    path: 'examen/:id',
+    component:ListarPruebasComponent
+  },
+
+
+  {
     path: 'empresa',
     component:EmpresaComponent
   },
+  {
+    path: 'empresa/seleccionar',
+    component:SeleccionarComponent
+  },
+  {
+    path: 'empresa/desempeno',
+    component:DesempenoComponent
+  },
+  {
+    path: 'empresa/resultados',
+    component:ResultadosComponentem
+  },
+  {
+    path: 'empresa/entrevistas',
+    component:AgendaComponent
+  },
+  {
+    path: 'empresa/programar',
+    component:DesempenoComponent
+  },
+
+
   {
     path: 'internoabc',
     component:InternoabcComponent
@@ -64,55 +133,6 @@ const routes: Routes = [
   {
     path: 'internoabc/entrevistas',
     component:EntrevistasComponent
-  },
-
-  {
-    path: 'examen/:id',
-    component:ListarPruebasComponent
-  },
-  {
-    path: 'persona/resultados',
-    component:ResultadosComponent
-  },
-  {
-    path: 'registro',
-    component:RegistroComponent
-  },
-  {
-    path: 'registro/empresa',
-    component:RegistroempresaComponent
-  },
-  {
-    path: 'registro/admin',
-    component:RegistroadminComponent
-  },
-  {
-    path: 'persona/datos',
-    component:DatosComponent
-  },
-  {
-    path: 'persona/laboral',
-    component:LaboralComponent
-  },
-  {
-    path: 'persona/academica',
-    component:AcademicaComponent
-  },
-  {
-    path: 'persona/idiomas',
-    component:IdiomasComponent
-  },
-  {
-    path: 'empresa/seleccionar',
-    component:SeleccionarComponent
-  },
-  {
-    path: 'empresa/desempeno',
-    component:DesempenoComponent
-  },
-  {
-    path: 'empresa/resultados',
-    component:ResultadosComponentem
   },
 
 

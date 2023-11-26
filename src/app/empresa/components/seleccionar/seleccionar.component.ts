@@ -1,5 +1,5 @@
 import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
-import { CompaniesService, Profile, Company,Offer, candidatoListo} from '../../model/companies.service';
+import { CompaniesService, Profile, Offer, candidatoListo, MemberTeam} from '../../model/companies.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/template/services/language.service';
@@ -11,9 +11,10 @@ import { LanguageService } from 'src/app/core/template/services/language.service
 })
 export class SeleccionarComponent implements OnInit {
 
-  llavecandidato!: string;
+  ofertaSeleccionada: number = 0;
+  llavecandidato = "";
   targetLanguage : string = "es"
-  candidatoactual!: Company;
+
   miscandidatos : candidatoListo[] = [];
   ofertas: Offer[] = [];
   profiles: Profile[] = [];
@@ -21,16 +22,18 @@ export class SeleccionarComponent implements OnInit {
   languages: string[] = [];
   tools: string[] = [];
   skills: string[] = [];
+  nombreCandidato = "";
 
-
-  public elcandidatoactual? :  Company;
 
   isToastOpen = false;
 
 
   public ionicForm: FormGroup = this.fb.group({
-    oferta: new FormControl('', [Validators.required]),
-    candidato: new FormControl('', [Validators.required]),
+    offer_id: new FormControl('', [Validators.required]),
+    candidate_id: new FormControl('', [Validators.required]),
+    tipo: new FormControl('', [Validators.required]),
+    rol: new FormControl('', [Validators.required]),
+    nombre: new FormControl('', ),
 
 
   });
@@ -47,8 +50,8 @@ export class SeleccionarComponent implements OnInit {
     this.router.navigate([opcion]);
   }
 
-  ponerCandidatos(candidato: number): void {
-    this.datosService.getCandidatosListos(this.llavecandidato).subscribe(datos => {
+  ponerCandidatos(): void {
+    this.companieService.getCandidatosListos(this.ofertaSeleccionada).subscribe(datos => {
       this.miscandidatos = datos;
       console.log("Los candidatos listos son",datos);
 
@@ -58,9 +61,26 @@ export class SeleccionarComponent implements OnInit {
 
   }
 
-  constructor(private fb: FormBuilder,private datosService: CompaniesService,private router : Router,private languageService: LanguageService) {
+  constructor(private fb: FormBuilder,private companieService: CompaniesService,private router : Router,private languageService: LanguageService) {
     this.llavecandidato = String( sessionStorage.getItem("llave"));
     this.getOfertas();
+    this.ionicForm.controls['offer_id'].valueChanges.subscribe((value) => {
+      this.ofertaSeleccionada = value;
+      this.ponerCandidatos();
+    }
+    );
+
+    this.ionicForm.controls['candidate_id'].valueChanges.subscribe((value) => {
+      let nombre = this.miscandidatos.filter(persona => persona.id === value)[0].name;
+      if (nombre !== undefined) {
+
+        console.log("El candidato seleccionado es",nombre);
+        console.log("El candidato seleccionado es de nombre",this.miscandidatos);
+        this.ionicForm.controls['nombre'].setValue(nombre );
+      }
+
+    }
+    );
 
   }
 
@@ -74,9 +94,9 @@ export class SeleccionarComponent implements OnInit {
 
   getOfertas() {
 
-    this.datosService.getOffers(this.llavecandidato).subscribe(datos => {
+    this.companieService.getOffers(this.llavecandidato).subscribe(datos => {
       this.ofertas = datos;
-      console.log("Este es el candidato que trajo",datos);
+      console.log("Este es las ofertas que trajo",datos);
 
     });
   }
@@ -93,8 +113,16 @@ export class SeleccionarComponent implements OnInit {
     this.targetLanguage = idioma;
   }
 
-  guardar2(datos: Company): void {
-    console.log("va a guardar esto",datos);
+  guardar2(datos: MemberTeam): void {
+
+    console.log("guardando  ",datos);
+    this.setOpen(true)
+    this.companieService.saveMemberTeam(datos).subscribe(rta => {
+
+      console.log("Rta guardar",rta);
+     this.go('empresa')
+    });
+
   }
 
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Examen } from '../prueba/prueba';
 import { Respuesta } from '../prueba/prueba';
+import { Entrevista } from 'src/app/internoabc/model/preentrevista';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,21 @@ export class PruebasService {
   constructor(private http: HttpClient) { }
 
   public getPruebas(candidato:string): Observable<Examen[]> {
-    console.log("lamando el servicio",this.apiUrlpruebas+candidato+"?status=in_progress&status=to_do")
-    return this.http.get<Examen[]>(this.apiUrlpruebas+candidato+"?status=in_progress&status=to_do");
+    console.log("lamando el servicio getPruebas",this.apiUrlpruebas+"candidate/"+candidato+"?status=in_progress&status=to_do&inclusive=true")
+    return this.http.get<Examen[]>(this.apiUrlpruebas+"candidate/"+candidato+"?status=in_progress&status=to_do&inclusive=true");
   }
+
+  public getPruebasxTipo(tipo:string): Observable<Examen[]> {
+    console.log("lamando el servicio getPruebasxTipo",this.apiUrlpruebas+"assignments?type="+tipo)
+    return this.http.get<Examen[]>(environment.baseUrl+"?type="+tipo);
+  }
+
+
+  public postAsignarPruebaaCandidato(examen:number,candidato:number) {
+    console.log("lamando el servicio postAsignarPruebaaCandidato",this.apiUrlpruebas+"/candidate"+examen+"/"+candidato)
+    return this.http.post(this.apiUrlpruebas+"candidate/"+examen+"/"+candidato,{});
+  }
+
 
   public guardarPregunta(codExamen:Number,rta: Respuesta) {
     console.log("gaurdando Pregunta -- URL  "+ this.apiGuardarPregunta + codExamen)
@@ -43,5 +56,6 @@ export class PruebasService {
       this.apiResultados + codExamen,{}
     )
   }
+
 
 }

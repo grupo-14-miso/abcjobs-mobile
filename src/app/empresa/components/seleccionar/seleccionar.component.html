@@ -18,7 +18,7 @@
       <ion-grid class="ion-padding">
         <ion-row>
           <ion-col>
-            <ion-icon name="return-down-back-outline" (click)="go('empresa')"></ion-icon>
+            <ion-icon size="large" name="return-down-back-outline" (click)="go('empresa')"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -30,33 +30,62 @@
   <ion-toast [isOpen]="isToastOpen" message="Se Guardo Correctamente" [duration]="2000"
     (didDismiss)="setOpen(false)"></ion-toast>
 
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ 'Asignar Miembro al Equipo' | translate | async }}</ion-card-title>
+      <ion-card-subtitle>{{ '' | translate | async }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+
   <form role="form" [formGroup]="ionicForm" (ngSubmit)="guardar2(ionicForm.value)" novalidate>
     <ion-grid>
 
 
-      <ion-row><label justify="center" for="rol">{{ "Ofertas Vigentes" | translate | async }}:</label>
+      <ion-row><label justify="center" for="oferta">{{ "Ofertas Vigentes" | translate | async }}:</label>
       </ion-row>
 
-
+      <ion-row>
 
         <ion-list>
           <ion-item>
-            <ion-select shape="round" justify="start" fill="outline" id="rol" formControlName="oferta" aria-label="Ofertas" placeholder="{{ 'Seleccione una oferta' | translate | async }} " [multiple]="false">
-              <ion-select-option  (click)="ponerCandidatos(name.offer_id)"  *ngFor="let name of ofertas" [value]="name.offer_id">  {{ name.description| translate | async }}</ion-select-option>
+            <ion-select shape="round" justify="start" fill="outline" id="oferta" formControlName="offer_id" aria-label="Ofertas" placeholder="{{ 'Seleccione una oferta' | translate | async }} " [multiple]="false">
+              <ion-select-option  (click)="ponerCandidatos()"  *ngFor="let name of ofertas" [value]="name.offer_id">  {{ name.description| translate | async }}</ion-select-option>
 
             </ion-select>
           </ion-item>
         </ion-list>
-
-
+      </ion-row>
+      <ion-row>
         <ion-list>
           <ion-item>
-            <ion-select shape="round" justify="start" fill="outline" id="candidatos" formControlName="candidato" aria-label="candidato" placeholder="{{ 'Seleccione un candidato' | translate | async }} " [multiple]="false">
-              <ion-select-option   *ngFor="let elegido of miscandidatos" [value]="elegido.id_candidato">  {{elegido.name}}</ion-select-option>
+            <ion-select shape="round" justify="start" fill="outline" id="candidatos" formControlName="candidate_id" aria-label="candidato" placeholder="{{ 'Seleccione un candidato' | translate | async }} " [multiple]="false">
+              <ion-select-option   *ngFor="let elegido of miscandidatos"  [value]="elegido.id" >  {{elegido.name}}</ion-select-option>
 
             </ion-select>
           </ion-item>
         </ion-list>
+      </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-input fill="outline" formControlName="tipo" shape="round"
+              label="{{ 'Tipo' | translate | async }}:" type="url" labelPlacement="floating">
+            </ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-input fill="outline" formControlName="rol" shape="round"
+              label="{{ 'Rol' | translate | async }}:" type="url" labelPlacement="floating">
+            </ion-input>
+          </ion-col>
+        </ion-row>
+
 
 
 
