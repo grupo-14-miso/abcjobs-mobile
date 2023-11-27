@@ -112,16 +112,18 @@ export class LoginComponent implements OnInit {
 
         console.log("llave", window.sessionStorage["key"] )
         console.log("token",window.sessionStorage["token"] )
+        this.miformulario.reset();
         this.router.navigate(['/persona']);
         return;
       }
       if (this.miformulario.controls['role'].value === 'Company') {
-
+        this.miformulario.reset();
         this.router.navigate(['/empresa']);
+
         return;
       }
       if (this.miformulario.controls['role'].value === 'Admin') {
-
+        this.miformulario.reset();
         this.router.navigate(['/internoabc']);
         return;
       }
