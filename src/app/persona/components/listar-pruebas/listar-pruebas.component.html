@@ -1,22 +1,52 @@
-<app-encabezados></app-encabezados>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Pruebas" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('es')"
+              src="../../assets/es.png"
+              class="mr-2"
+              alt="Español"
+            />
+          </ion-col>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('en')"
+              src="../../assets/en.png"
+              class="mr-2"
+              alt="English"
+            />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
 
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Procesos Vigentes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon
+              name="return-down-back-outline"
+              size="large"
+              (click)="go('persona')"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
   <ion-content  class="ion-padding">
 
     <div class="container-fluid" *ngIf="examenSeleccionado===false">
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Aspirante</ion-card-title>
-          <ion-card-subtitle>Pruebas Pendientes</ion-card-subtitle>
+          <ion-card-title>{{nombrePersona }}</ion-card-title>
+          <ion-card-subtitle>{{ 'Procesos Pendientes' | translate | async }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
         </ion-card-content>
@@ -24,10 +54,18 @@
 
       <ion-card  (click)="seleccionaExamen(i)" color="success" *ngFor="let c of misexamenes; let i =index">
         <ion-card-header>
-          <ion-card-title>Examen de {{c.focus}}</ion-card-title>
-          <ion-card-subtitle>Rol {{c.rol}}</ion-card-subtitle>
+          <ion-card-title><ion-icon name="create"></ion-icon>{{ 'Examen: ' | translate | async }} {{c.focus}}</ion-card-title>
+          <ion-card-subtitle>{{ 'Rol' | translate | async }} {{c.rol}}</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content> Tipo {{c.type}} </ion-card-content>
+        <ion-card-content> {{ 'Tipo' | translate | async }} {{c.type}} </ion-card-content>
+      </ion-card>
+
+      <ion-card  (click)="abreLink(c)" color="secondary" *ngFor="let c of misentrevistas; let i =index">
+        <ion-card-header>
+          <ion-card-title><ion-icon name="people"></ion-icon>{{ 'Entrevista: ' | translate | async }} {{c.description}}</ion-card-title>
+          <ion-card-subtitle>{{ 'Fecha' | translate | async }} {{c.date}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content> {{ 'Link' | translate | async }} {{c.link}} </ion-card-content>
       </ion-card>
 
 
@@ -36,5 +74,8 @@
     <div class="container-fluid" *ngIf="examenSeleccionado===true">
       <app-examen [miexamen]="misexamenes[codExamen]" (finalizarExamen)="examenFinalizado($event)"></app-examen>
     </div>
+
+
+
   </ion-content>
 

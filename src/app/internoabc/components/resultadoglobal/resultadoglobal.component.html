@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Seleccion de Empleados" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
+          </ion-col>
+          <ion-col>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon size="large" name="return-down-back-outline" (click)="go('internoabc')"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding">
+
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'Resultados Entrevistas' | translate | async }}</ion-card-title>
+        <ion-card-subtitle>{{ 'Global' | translate | async }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+
+
+
+    <ion-card  *ngFor="let c of misentrevistas; let i =index">
+
+      <div class="container-fluid" *ngIf="c.result.length>0">
+        <ion-card-header color="success">
+          <ion-card-title><ion-icon name="people"></ion-icon>
+            {{c.candidates_details[0].candidate.Nombre +" " + c.candidates_details[0].candidate.apellido  }}</ion-card-title>
+            <ion-card-title>
+              {{c.candidates_details[0].offer.description   }}</ion-card-title>
+
+            <ion-card-subtitle> {{c.description}}</ion-card-subtitle>
+          <ion-card-subtitle>{{ 'Fecha' | translate | async }} {{c.date}}</ion-card-subtitle>
+          <ion-card-content color="secondary"> {{ 'RESULTADO : ' | translate | async }} {{c.result}} </ion-card-content>
+        </ion-card-header>
+      </div>
+
+      <div class="container-fluid" *ngIf="c.result.length===0">
+      <ion-card-header  color="secondary">
+        <ion-card-title><ion-icon name="eye"></ion-icon>
+          {{c.candidates_details[0].candidate.Nombre +" " + c.candidates_details[0].candidate.apellido  }}</ion-card-title>
+            <ion-card-title>
+              {{c.candidates_details[0].offer.description   }}</ion-card-title>
+
+            <ion-card-subtitle> {{c.description}}</ion-card-subtitle>
+        <ion-card-subtitle>{{ 'Fecha' | translate | async }} {{c.date}}</ion-card-subtitle>
+
+      </ion-card-header>
+      <ion-card-content>
+
+        <form role="form" [formGroup]="ionicForm" (ngSubmit)="guardar(c.id)" novalidate>
+
+          <ion-row>
+            <ion-col size="10">
+              <ion-input
+                fill="outline"
+                formControlName="result"
+                shape="round"
+                label="{{ 'Resultado' | translate | async }}:"
+                type="text"
+                labelPlacement="floating"
+              >
+              </ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-icon (click)="guardar(c.id)" size="large" name="save-outline"></ion-icon>
+
+            </ion-col>
+
+          </ion-row>
+          <ion-row>
+
+          </ion-row>
+        </form>
+
+
+      </ion-card-content>
+      </div>
+    </ion-card>
+
+
+
+
+
+</ion-content>
+

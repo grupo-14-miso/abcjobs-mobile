@@ -3,16 +3,16 @@
 
 <ion-grid class="ion-padding">
   <ion-row>
-    <h3>Pregunta {{pregunta+1}} de {{totalPreguntas}}</h3>
+    <h3>{{ 'Pregunta' | translate | async }} {{pregunta+1}} {{ 'de' | translate | async }} {{totalPreguntas}}</h3>
   </ion-row>
   <ion-row>
-    <h1>{{traePregunta()}}</h1>
+    <h1>{{ traePregunta() | translate | async }} </h1>
   </ion-row>
   <ion-row>
     <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
 
       <div>
-        <label>Seleccione una de las siguientes respuestas</label>
+        <label>{{ 'Seleccione una de las siguientes respuestas' | translate | async }}</label>
         <ion-list>
         <ion-radio-group name="option" [(ngModel)]="selectedOption" required class="vertical-radio-group">
           <ion-row value="x" *ngFor="let mivar of listartas; let x = index; " >
@@ -22,7 +22,7 @@
 
               </ion-radio>
 
-              <span class="ion-text-wrap"><h4>{{ traeTexto(mivar)  }}</h4></span>
+              <span class="ion-text-wrap"><h4>{{ traeTexto(mivar)[0] | translate | async }} </h4></span>
             </ion-item>
 
           </ion-row>
@@ -32,17 +32,17 @@
 
        <!-- Validation message for required field -->
        <div class="validation-message" *ngIf="isSubmitted && !form.controls['option'].valid">
-        Para poder continuar seleccione una opcion
+        {{ 'Para poder continuar seleccione una opcion' | translate | async }}
       </div>
 
 
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button  id="finalizar" (click)="finalizar()"  *ngIf="pregunta+1 >= totalPreguntas" >Finalizar</ion-button>
+          <ion-button  id="finalizar" (click)="finalizar()"  *ngIf="pregunta+1 >= totalPreguntas" >{{ 'Finalizar' | translate | async }}</ion-button>
         </ion-buttons>
 
         <ion-buttons slot="end">
-          <ion-button type="submit" id="siguiente" [disabled]="selectedOption === ''" *ngIf="pregunta+1 < totalPreguntas" >Siguiente</ion-button>
+          <ion-button type="submit" id="siguiente" [disabled]="selectedOption === ''" *ngIf="pregunta+1 < totalPreguntas" >{{ 'Siguiente' | translate | async }}</ion-button>
         </ion-buttons>
       </ion-toolbar>
 

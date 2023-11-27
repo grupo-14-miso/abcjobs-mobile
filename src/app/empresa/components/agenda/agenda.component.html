@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Seleccion de Empleados" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
+          </ion-col>
+          <ion-col>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon size="large" name="return-down-back-outline" (click)="go('empresa')"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding">
+
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'Entrevistas Programadas' | translate | async }}</ion-card-title>
+        <ion-card-subtitle>{{ '' | translate | async }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+
+
+
+    <ion-card  (click)="abreLink(c)" color="secondary" *ngFor="let c of misentrevistas; let i =index">
+      <ion-card-header>
+        <ion-card-title><ion-icon name="people"></ion-icon>{{ 'Entrevista: ' | translate | async }} {{c.description}}</ion-card-title>
+        <ion-card-subtitle>{{ 'Fecha' | translate | async }} {{c.date}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content> {{ 'Link' | translate | async }} {{c.link}} </ion-card-content>
+    </ion-card>
+
+
+
+
+
+</ion-content>
+

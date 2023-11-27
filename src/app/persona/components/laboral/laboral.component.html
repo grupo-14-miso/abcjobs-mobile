@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Experiencia Laboral" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
+          </ion-col>
+          <ion-col>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon size="large"  name="return-down-back-outline" (click)="go('persona')"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <ion-toast [isOpen]="isToastOpen" message="Se Guardo Correctamente" [duration]="2000"
+    (didDismiss)="setOpen(false)"></ion-toast>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="guardar2(ionicForm.value)" novalidate>
+    <ion-row>
+      <ion-col>
+        <ion-input fill="outline" formControlName="cargo" shape="round" label="{{ 'Cargo' | translate | async }}:"
+          type="text" labelPlacement="floating">
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input fill="outline" formControlName="ciudad" shape="round" label="{{ 'Ciudad' | translate | async }}:"
+          type="text" labelPlacement="floating">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input fill="outline" formControlName="empresa" shape="round" label="{{ 'Empresa' | translate | async }}:"
+          type="text" labelPlacement="floating">
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input fill="outline" formControlName="fecha_inicio" shape="round"
+          label="{{ 'Fecha Inicio' | translate | async }}:" type="text" labelPlacement="floating">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input fill="outline" formControlName="fecha_fin" shape="round"
+          label="{{ 'Fecha Fin' | translate | async }}:" labelPlacement="floating"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input fill="outline" formControlName="pais" shape="round" label="{{ 'Pais' | translate | async }}:"
+          type="text" labelPlacement="floating">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-input fill="outline" formControlName="rol" shape="round" label="{{ 'rol' | translate | async }}:"
+      type="text" labelPlacement="floating">
+    </ion-input>
+
+    <ion-row>
+      <ion-icon (click)="nuevo()" size="large" name="add-outline"></ion-icon>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-button type="submit" class="btn btn-primary ml-2" [disabled]="!ionicForm.valid">Guardar</ion-button>
+    </ion-row>
+  </form>
+  <ion-grid>
+
+    <ion-row>
+
+      {{ "Otra Experiencia laboral" | translate | async }}
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        No.
+      </ion-col>
+      <ion-col>
+        Empresa
+      </ion-col>
+      <ion-col>
+        Fecha
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let name of miscambios.trabajos;let indice=index">
+      <ion-col>
+        <ion-icon  (click)="editar(name)" name="create-outline" color="primary"></ion-icon> <a (click)="setPosicion(indice)"> {{ indice +1 }}</a>
+
+      </ion-col>
+      <ion-col>
+        <a (click)="setPosicion(indice)"> {{ name.empresa }}</a>
+
+      </ion-col>
+      <ion-col>
+        <a (click)="setPosicion(indice)"> {{ name.fecha_inicio }}</a>
+
+      </ion-col>
+      <ion-col>
+
+
+        <ion-icon (click)="eliminar()" name="trash-outline"></ion-icon>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

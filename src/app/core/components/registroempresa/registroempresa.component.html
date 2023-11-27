@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ABC jobs</ion-title>
+
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img (click)="ponerIdioma('es')" src="../../assets/es.png" class="mr-2" alt="Español" />
+          </ion-col>
+          <ion-col>
+            <img (click)="ponerIdioma('en')" src="../../assets/en.png" class="mr-2" alt="English" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>{{ 'Bienvenido a ABC JOBS' | translate | async }}</ion-card-title>
+      <ion-card-subtitle>{{ 'Creación de Usuario Empressarial' | translate | async }}</ion-card-subtitle>
+    </ion-card-header>
+
+  </ion-card>
+
+
+  <form [formGroup]="miformulario" (ngSubmit)="guardar()" novalidate>
+    <ion-grid>
+      <ion-row>
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Nombre' | translate | async }}"
+          type="text" formControlName="name"></ion-input>
+
+      </ion-row>
+      <ion-row>
+
+
+        <ion-input shape="round" fill="outline" labelPlacement="floating"
+          label="{{ 'Tipo Documento' | translate | async }}" type="text" formControlName="document_type"></ion-input>
+
+
+
+      </ion-row>
+
+
+      <ion-row>
+
+        <ion-input shape="round" fill="outline" labelPlacement="floating"
+          label="{{ 'Numero Documento' | translate | async }}" type="text"
+          formControlName="document_number"></ion-input>
+
+      </ion-row>
+      <ion-row>
+
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Contraseña' | translate | async }}"
+          type="password" formControlName="password"></ion-input>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'email' | translate | async }}"
+          type="text" formControlName="email"></ion-input>
+
+      </ion-row>
+
+
+
+
+        <ion-row>
+          <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Teléfono' | translate | async }}"
+            type="text" formControlName="phone_number"></ion-input>
+
+        </ion-row>
+        <ion-row>
+          <ion-input shape="round" fill="outline" labelPlacement="floating" label="{{ 'Pais' | translate | async }}"
+            type="text" formControlName="country"></ion-input>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="primary" expand="block">{{ 'LogIn' | translate | async }}</ion-button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  </form>
+  <a [routerLink]="['/login']" class="small-text">Ya tiene usuario? Inicie sesion aqui</a>
+
+</ion-content>

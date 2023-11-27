@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {  Respuesta , Examen} from '../prueba/prueba';
 import { ResultadoService } from './resultado.service'
-import { IonicModule } from '@ionic/angular';
+import { LanguageService } from 'src/app/core/template/services/language.service';
+import { Examen } from '../prueba/prueba';
+import { Router } from '@angular/router';
 
 
 
@@ -17,9 +18,9 @@ export class ResultadosComponent implements OnInit {
   public misexamenes :  Array<Examen> = [];
   examenSeleccionado = false;
   codExamen = 1;
+  targetLanguage : string = "es"
 
-
-  constructor(private resultadoService : ResultadoService) {
+  constructor(private resultadoService : ResultadoService,private router : Router,private languageService: LanguageService) {
     this.getPruebasWs()
   }
 
@@ -43,7 +44,23 @@ export class ResultadosComponent implements OnInit {
     this.codExamen = examen
   }
 
+  ponerIdioma(idioma: string): void {
+
+    this.languageService.setLanguage(idioma);
+    this.targetLanguage = idioma;
+  }
+
+  goBack() {
+    this.router.navigate(['persona']);
+  }
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
+  }
+
+
   ngOnInit() {
+
   }
 
 }

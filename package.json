@@ -37,7 +37,7 @@
     "@angular/cli": "~14.2.3",
     "@angular/compiler-cli": "^14.2.0",
     "@capacitor/cli": "5.5.0",
-    "@faker-js/faker": "^8.1.0",
+    "@faker-js/faker": "^8.3.1",
     "@ionic/angular-toolkit": "latest",
     "@types/jasmine": "~4.0.0",
     "cypress": "^13.3.3",

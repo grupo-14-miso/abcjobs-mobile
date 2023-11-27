@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ "Idiomas" | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('es')"
+              src="../../assets/es.png"
+              class="mr-2"
+              alt="Español"
+            />
+          </ion-col>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('en')"
+              src="../../assets/en.png"
+              class="mr-2"
+              alt="English"
+            />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon
+              name="return-down-back-outline"
+              (click)="go('persona')"
+              size="large"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-toast
+    [isOpen]="isToastOpen"
+    message="Se Guardo Correctamente"
+    [duration]="2000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast>
+
+  <form
+    [formGroup]="ionicForm"
+    (ngSubmit)="guardar(ionicForm.value)"
+    novalidate
+  >
+    <ion-row>
+
+      <ion-input
+        fill="outline"
+        formControlName="idioma"
+        shape="round"
+        label="{{ 'Idioma' | translate | async }}:"
+        type="text"
+        labelPlacement="floating"
+      >
+      </ion-input>
+    </ion-row>
+
+    <ion-row>
+      <ion-input
+        fill="outline"
+        formControlName="nivel_conversacion"
+        shape="round"
+        label="{{ 'Nivel Conversación' | translate | async }}:"
+        type="text"
+        labelPlacement="floating"
+      >
+      </ion-input>
+    </ion-row>
+
+
+    <ion-row>
+        <ion-input
+          fill="outline"
+          formControlName="nivel_lectura"
+          shape="round"
+          label="{{ 'Nivel Lectura' | translate | async }}:"
+          type="text"
+          labelPlacement="floating"
+        >
+        </ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="nivel_escritura"
+          shape="round"
+          label="{{ 'Nivel Escritura' | translate | async }}:"
+          type="text"
+          labelPlacement="floating"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input
+          fill="outline"
+          formControlName="nativo"
+          shape="round"
+          label="{{ 'Nativo' | translate | async }}:"
+          labelPlacement="floating"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+        <ion-input
+          fill="outline"
+          formControlName="fecha_certificacion"
+          shape="round"
+          label="{{ 'Fecha Certificación' | translate | async }}:"
+          type="text"
+          labelPlacement="floating"
+        >
+        </ion-input>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-icon (click)="nuevo()" size="large" name="add-outline"></ion-icon>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+
+      <ion-button
+        type="submit"
+        class="btn btn-primary ml-2"
+        [disabled]="!ionicForm.valid"
+        >{{ "Guardar" | translate | async }}</ion-button
+      >
+    </ion-row>
+  </form>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center" >
+      {{ "Idiomas" | translate | async }}
+    </ion-row>
+
+    <ion-row>
+      <ion-col> No. </ion-col>
+      <ion-col> {{ "Nombre" | translate | async }} </ion-col>
+      <ion-col> {{ "Conversación" | translate | async }} </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of estudios; let indice = index">
+      <ion-col><ion-icon  (click)="editar(item)" name="create-outline" color="primary"></ion-icon> <a (click)="setPosicion(indice)"> {{ indice +1 }}</a> </ion-col>
+      <ion-col> <a (click)="setPosicion(indice)">{{ item.idioma }} </a></ion-col>
+      <ion-col> <a (click)="setPosicion(indice)">{{ item.nivel_conversacion }} </a></ion-col>
+      <ion-col>
+
+
+        <ion-icon (click)="eliminar()" name="trash-outline"></ion-icon>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {  Respuesta } from '../prueba/prueba';
+import {  Respuesta ,Examen,Entrevista} from '../prueba/prueba';
 import { PruebasService } from './pruebas.service';
-import { Examen } from '../prueba/prueba';
-import { IonicModule } from '@ionic/angular';
-
+import { LanguageService } from 'src/app/core/template/services/language.service';
+import { Router } from '@angular/router';
+import { InterviewService,Interview } from 'src/app/core/template/services/interview.service';
 
 
 @Component({
@@ -15,18 +15,53 @@ export class ListarPruebasComponent  {
   [x: string]: any;
 
   public misexamenes :  Array<Examen> = [];
+  public misentrevistas : Interview[] = [];
   examenSeleccionado = false;
   codExamen = 0;
+  targetLanguage : string = "es"
+  nombrePersona : string = "Juan"
 
-  constructor(private pruebasService: PruebasService) {
+  constructor(private entrevistasService: InterviewService,private pruebasService: PruebasService,private router : Router,private languageService: LanguageService) {
+    this.nombrePersona = String( sessionStorage.getItem("name"));
     this.getPruebasWs()
+    this.getEntrevistasWs()
+  }
+
+  abreLink(mientrevista:Interview){
+    window.open(mientrevista.link, "_blank");
+  }
+
+  go(opcion: string): void {
+    this.router.navigate([opcion]);
   }
 
 
+
+  ponerIdioma(idioma: string): void {
+
+    this.languageService.setLanguage(idioma);
+    this.targetLanguage = idioma;
+  }
+
+
+
+
   getPruebasWs() {
-    this.pruebasService.getPruebas().subscribe(datos => {
+    let key = String(sessionStorage.getItem("llave"));
+
+    this.pruebasService.getPruebas(key).subscribe(datos => {
       this.misexamenes = datos;
-      console.log(this.misexamenes)
+
+
+    });
+  }
+
+  getEntrevistasWs() {
+    let key = Number(sessionStorage.getItem("llave"));
+
+    this.entrevistasService.getInterviewsByCandidate(key).subscribe(datos => {
+      this.misentrevistas = datos;
+
 
     });
   }
@@ -41,6 +76,8 @@ export class ListarPruebasComponent  {
     console.log(rta)
     this.examenSeleccionado = false;
     this.codExamen = 0
+    this.go('persona')
+
   }
 
 

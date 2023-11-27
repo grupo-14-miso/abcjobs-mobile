@@ -1,75 +1,107 @@
-<app-encabezados></app-encabezados>
+<ion-header>
 
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
+  <ion-toolbar color="primary">
+    <ion-title>{{ 'Menu Candidato' | translate | async }}</ion-title>
+    <div slot="secondary">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('es')"
+              src="../../assets/es.png"
+              class="mr-2"
+              alt="Español"
+            />
+          </ion-col>
+          <ion-col>
+            <img
+              (click)="ponerIdioma('en')"
+              src="../../assets/en.png"
+              class="mr-2"
+              alt="English"
+            />
+          </ion-col>
 
+        </ion-row>
+      </ion-grid>
+    </div>
 
+    <div slot="end">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-icon name="exit-outline"  (click)="go('login')"  size="large"></ion-icon>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
     <ion-card>
-      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
       <ion-card-header>
-        <ion-card-title>Bienvenido a ABC JOBS</ion-card-title>
-        <ion-card-subtitle>Menu de opciones</ion-card-subtitle>
-      </ion-card-header>
-
-    </ion-card>
-
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>DEPARTAMENTO DE SELECCION ABC</ion-card-title>
-        <ion-card-subtitle>Procesos Internos</ion-card-subtitle>
+        <ion-card-title>{{ 'DEPARTAMENTO DE SELECCION ABC' | translate | async }}</ion-card-title>
+        <ion-card-subtitle>{{ 'Procesos Internos' | translate | async }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-list id="mimenu">
-          <ion-item>
-            <ion-thumbnail slot="start" routerLink="/internoabc/agendar" id="agendarentrevista">
+          <ion-item [routerLink]="['/internoabc/agendar']" >
+            <ion-thumbnail
+              slot="start"
+
+              id="agendarentrevista"
+            >
               <img alt="datos" src="./assets/application_2245126.png" />
             </ion-thumbnail>
-            <ion-label>Agendar Entrevistas</ion-label>
+            <ion-label>{{ 'Agendar Entrevistas' | translate | async }}</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-thumbnail slot="start" routerLink="/internoabc/programar" id="programarpruebas">
+          <ion-item  [routerLink]="['/internoabc/programar']" >
+            <ion-thumbnail
+              slot="start"
+              id="programarpruebas"
+            >
               <img alt="experiencia" src="./assets/work-from-home.png" />
             </ion-thumbnail>
-            <ion-label>Programar Pruebas</ion-label>
+            <ion-label>{{ 'Programar Pruebas' | translate | async }}</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-thumbnail slot="start" routerLink="/internoabc/resultados" id="consultarpruebas">
-              <img alt="academica" src="./assets/education_3976625.png" />
+          <ion-item  [routerLink]="['/internoabc/consulta']">
+            <ion-thumbnail
+              slot="start"
+
+              id="consultarpruebas"
+            >
+              <img alt="academica" src="./assets/investigacion.png" />
             </ion-thumbnail>
-            <ion-label>Consultar Pruebas</ion-label>
+            <ion-label>{{ 'Resultados Procesos' | translate | async }}</ion-label>
           </ion-item>
 
-          <ion-item >
-            <ion-thumbnail slot="start" routerLink="/internoabc/registrar" id="registrarresultados">
-              <img alt="tecnica" src="./assets/working_4727424.png" />
+          <ion-item  [routerLink]="['/internoabc/resultados']">
+            <ion-thumbnail
+              slot="start"
+
+              id="registrarresultados"
+            >
+              <img alt="tecnica" src="./assets/certificado.png" />
             </ion-thumbnail>
-            <ion-label>Registrar Resultados</ion-label>
+            <ion-label>{{ 'Resultados Entrevistas' | translate | async }}</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-thumbnail slot="start" routerLink="/internoabc/entrevistas" id="consultaentrevistas">
-              <img alt="academica" src="./assets/education_3976625.png" />
+          <ion-item  [routerLink]="['/internoabc/entrevistas']" >
+            <ion-thumbnail
+              slot="start"
+
+              id="consultaentrevistas"
+            >
+              <img alt="academica" src="./assets/calendario.png" />
             </ion-thumbnail>
-            <ion-label>Consultar Entrevistas</ion-label>
+            <ion-label>{{ 'Entrevistas Programadas' | translate | async }}</ion-label>
           </ion-item>
-
         </ion-list>
       </ion-card-content>
     </ion-card>
-
-
-
-  </ion-content>
-</div>
-
+</ion-content>
